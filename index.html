@@ -9,25 +9,33 @@
 	<title>Alex Reeser</title>
 </head>
 <body ng-app="site" ng-controller="SiteCtrl">
-  <div class="navbar">
-    <div class="navbar-inner">
+  <div class="navbar navbar-inverse">
+    <div class="navbar-inner" >
       <a class="brand" href="#">Alex Reeser</a>
       <ul class="nav">
-        <li class="active"><a href="#">Main</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Resume</a></li>
-        <li><a href="#">About</a></li>
+        <li ng-class="{'active': site.tab == ''}"><a href="#">Main</a></li>
+        <li class="dropdown" ng-class="{'active': site.tab == 'u'}">
+          <a class="dropdown-toggle" data-toggle="dropdown">Unity Projects</a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+              <li ng-repeat="proj in unityProjects">
+                  <a data-ng-click="gotoUnity($index)">{{proj}}</a>
+              </li>
+          </ul>  
+          </li>
+        <li ng-class="{'active': site.tab == 'w'}"><a ng-click="goto('/web')">Web Projects</a></li>
+        <li ng-class="{'active': site.tab == 'py'}"><a ng-click="goto('/python')">Python Projects</a></li>
+        <li ng-class="{'active': site.tab == 'r'}"><a ng-click="goto('/resume')">Resume</a></li>
+        <li ng-class="{'active': site.tab == 'a'}"><a ng-click="goto('/about')">About Me</a></li>
       </ul>
     </div>
   </div>
   <div >Alex's Website</div>
-  <div>
-    <h4>Atomic Pinball</h4>
-    <iframe class="imgur-album" width="100%" height="550" frameborder="0" src="http://imgur.com/a/4PJf5/embed"></iframe>
+  <div ng-view="">
+  
   </div>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
   <script src="scripts/app/site.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>"
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
