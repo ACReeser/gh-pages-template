@@ -31,6 +31,23 @@ body{
 	margin-right:5%
 }
 
+.top-level{
+    background-image:url("content/images/geometric.png");
+}   
+
+.atomic-partial{
+    background-image:url("http://i.imgur.com/yP64A7D.png");
+}
+.delpoole-partial{
+    background-image:url("http://i.imgur.com/qZbY7SN.png");
+}
+.gallery{
+    width:60%;
+    margin-left:auto;
+    margin-right:auto;
+    
+}
+
 /******Media Queries*******/
 
 @media all and (min-width:40em) {
