@@ -1,0 +1,4 @@
+{"ts":1367470225885,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1367470222614,"patch":[[{"diffs":[[1,"<div ng-init=\"site.tab ='py'\">\n    \n</div>"]],"start1":0,"start2":0,"length1":0,"length2":42}]],"length":42,"saved":false}
+{"ts":1367472224380,"patch":[[{"diffs":[[0,"b ='py'\""],[1," class=\"delpoole-partial\""],[0,">\n    \n<"]],"start1":21,"start2":21,"length1":16,"length2":41}]],"length":67,"saved":false}
+{"ts":1367472331050,"patch":[[{"diffs":[[0,"l\">\n    "],[1,"<p>Axel Delpoole and the Iron Gear Revolution was a 2D Python Action/Adventure game me and my buddy Christian wrote for a student project Sophmore year of college.</p>"],[0,"\n</div>"]],"start1":52,"start2":52,"length1":15,"length2":182}]],"length":234,"saved":false}

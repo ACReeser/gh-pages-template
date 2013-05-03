@@ -32,6 +32,7 @@ body{
 }
 
 .top-level{
+    /*from http://subtlepatterns.com/dark-geometric/*/
     background-image:url("content/images/geometric.png");
 }   
 
