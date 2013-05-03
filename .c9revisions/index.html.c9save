@@ -20,3 +20,4 @@
 {"ts":1367471944259,"patch":[[{"diffs":[[0,"-view=\"\""],[1," class=\"top-level\""],[0,">\n  \n  <"]],"start1":1565,"start2":1565,"length1":16,"length2":34}]],"length":1944,"saved":false}
 {"ts":1367471955551,"patch":[[{"diffs":[[0,"w=\"\""],[-1," class=\"top-level\""],[0,">\n  "]],"start1":1569,"start2":1569,"length1":26,"length2":8}]],"length":1926,"saved":false}
 {"ts":1367472041985,"patch":[[{"diffs":[[0,"iteCtrl\""],[1," class=\"top-level\""],[0,">\n  <div"]],"start1":492,"start2":492,"length1":16,"length2":34}]],"length":1944,"saved":false}
+{"ts":1367549964286,"patch":[[{"diffs":[[0,"-view=\"\""],[1," class=\"partial\""],[0,">\n  \n  <"]],"start1":1583,"start2":1583,"length1":16,"length2":32}]],"length":1960,"saved":false}

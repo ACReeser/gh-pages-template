@@ -8,6 +8,7 @@ html, body, div, object, iframe, fieldset {
 	margin: 0; 
 	padding: 0; 
 	border: 0;
+    color:#999;
 } 
 ol, ul { 
 	list-style: none;
@@ -36,17 +37,27 @@ body{
     background-image:url("content/images/geometric.png");
 }   
 
-.atomic-partial{
-    background-image:url("http://i.imgur.com/yP64A7D.png");
-}
-.delpoole-partial{
-    background-image:url("http://i.imgur.com/qZbY7SN.png");
+.partial{
+    margin-left:5%;
+    margin-right:5%;    
 }
 .gallery{
     width:60%;
     margin-left:auto;
     margin-right:auto;
-    
+}
+.center-header{
+    margin-left:auto;
+    margin-right:auto;
+    width:70%;
+    text-align:center;
+}
+
+.atomic-partial{
+    /*background-image:url("http://i.imgur.com/yP64A7D.png");*/
+}
+.delpoole-partial{
+    /*background-image:url("http://i.imgur.com/qZbY7SN.png");*/
 }
 
 /******Media Queries*******/
