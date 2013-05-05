@@ -22,7 +22,13 @@
               </li>
           </ul>  
           </li>
-        <li ng-class="{'active': site.tab == 'w'}"><a ng-click="goto('/web')">Web Projects</a></li>
+        <li ng-class="{'active': site.tab == 'w'}" class="dropdown"><a data-toggle="dropdown">Web Projects</a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+              <li ng-repeat="proj in webProjects">
+                  <a data-ng-click="gotoWeb($index)">{{proj}}</a>
+              </li>
+          </ul>  
+          </li></li>
         <li ng-class="{'active': site.tab == 'py'}"><a ng-click="goto('/python')">Python Projects</a></li>
         <li ng-class="{'active': site.tab == 'r'}"><a ng-click="goto('/resume')">Resume</a></li>
         <li ng-class="{'active': site.tab == 'a'}"><a ng-click="goto('/about')">About Me</a></li>
