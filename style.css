@@ -27,21 +27,25 @@ legend {
 }
 /************End Reset**************/
 
-body{
-	margin-left:5%;
-	margin-right:5%
-}
-
 .top-level{
     /*from http://subtlepatterns.com/dark-geometric/*/
     background-image:url("content/images/geometric.png");
 }   
+
+.navbar .brand{
+    margin-left:10%;
+}
 
 .partial{
     margin-left:5%;
     margin-right:5%;    
 }
 .gallery{
+    width:60%;
+    margin-left:auto;
+    margin-right:auto;
+}
+.timeframe{
     width:60%;
     margin-left:auto;
     margin-right:auto;
