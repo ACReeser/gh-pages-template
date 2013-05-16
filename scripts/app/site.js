@@ -1,5 +1,5 @@
 function SiteCtrl($scope, $routeParams, $location) {
-  $scope.unityProjects = ["Atomic Pinball","Psychosurgeon","r/Knights of New","Shell",];
+  $scope.unityProjects = ["Atomic Pinball","Psychosurgeon","r/Knights of New",];
   $scope.webProjects = ["Time Slice","Ico-Ico",];
     $scope.site = {tab: ""};
     $scope.gotoUnity = function(index){
@@ -44,6 +44,8 @@ angular.module('site', []).
       when('/python', {templateUrl: 'partials/python.html'}).
       when('/time', {templateUrl: 'partials/time.html'}).
       when('/icoico', {templateUrl: 'partials/ico.html'}).
+      when('/zombie', {templateUrl: 'partials/zombie.html'}).
+      when('/shell', {templateUrl: 'partials/shell.html'}).
       otherwise({redirectTo: '/'});
 }]);
   

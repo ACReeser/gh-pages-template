@@ -1,0 +1,4 @@
+{"ts":1368665010503,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1368665022949,"patch":[[{"diffs":[[1,"<div>\n    <p>\n        Shell is my super-secret pet project that is coming along very slowly.\n    </p>\n</div>"]],"start1":0,"start2":0,"length1":0,"length2":108}]],"length":108,"saved":false}
+{"ts":1368665029392,"patch":[[{"diffs":[[0,"<div"],[1," ng-init=\"site.tab = 's'\""],[0,">\n    <p"]],"start1":0,"start2":0,"length1":12,"length2":37}]],"length":133,"saved":false}
+{"ts":1368673406064,"patch":[[{"diffs":[[0,"   </p>\n"],[1,"    <p>Details to come.</p>\n"],[0,"</div>"]],"start1":119,"start2":119,"length1":14,"length2":42}]],"length":161,"saved":false}

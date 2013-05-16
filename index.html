@@ -13,22 +13,28 @@
     <div class="navbar-inner" >
       <a class="brand" href="#">Alex Reeser</a>
       <ul class="nav">
-        <li class="dropdown" ng-class="{'active': site.tab == 'u'}">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="">Unity Projects</a>
+        <li class="dropdown" ng-class="{'active': site.tab == 's'}">
+          <a data-ng-click="goto('/shell')" href="">Shell</a>
+        </li>
+        <li class="dropdown" ng-class="{'active': site.tab == 'g'}">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="">Games</a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
               <li ng-repeat="proj in unityProjects">
                   <a data-ng-click="gotoUnity($index)" href="">{{proj}}</a>
               </li>
-          </ul>  
-          </li>
-        <li ng-class="{'active': site.tab == 'w'}" class="dropdown"><a data-toggle="dropdown" href="">Web Projects</a>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+              <li class="divider"></li>
               <li ng-repeat="proj in webProjects">
                   <a data-ng-click="gotoWeb($index)" href="">{{proj}}</a>
               </li>
+              <li class="divider"></li>
+              <li><a ng-click="goto('/python')" href="">Axel Delpoole</a></li>
           </ul>  
-          </li></li>
-        <li ng-class="{'active': site.tab == 'py'}"><a ng-click="goto('/python')" href="">Python Projects</a></li>
+          </li>
+        <!--<li ng-class="{'active': site.tab == 'w'}" class="dropdown"><a data-toggle="dropdown" href="">Web Projects</a>-->
+        <!--  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">-->
+        <!--  </ul>  -->
+        <!--</li>-->
+        <li ng-class="{'active': site.tab == 'z'}"><a ng-click="goto('/zombie')" href="">Pitches</a></li>
         <li ng-class="{'active': site.tab == 'r'}"><a ng-click="goto('/resume')" href="">Resume</a></li>
         <li ng-class="{'active': site.tab == 'a'}"><a ng-click="goto('/about')" href="">About Me</a></li>
       </ul>
