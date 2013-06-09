@@ -4,6 +4,9 @@
 	-webkit-box-sizing: border-box; 
 	box-sizing: border-box; 
 }
+html{
+    overflow:hidden;
+}
 html, body, div, object, iframe, fieldset { 
 	margin: 0; 
 	padding: 0; 
@@ -62,6 +65,28 @@ legend {
 }
 .delpoole-partial{
     /*background-image:url("http://i.imgur.com/qZbY7SN.png");*/
+}
+
+div[data-muck-about-sprite]{
+    position:absolute;
+    left:0;
+    right:0;
+    height: 64px;
+    width:54px;
+    cursor:pointer;
+}
+div[data-zeppelin-mothership]{
+    position:absolute;
+    left:0;
+    right:0;
+    height: 560px;
+    width:2468px;
+    z-index:0;
+}
+div[data-zeppelin-mothership] img{
+    position:absolute;
+    top:0;
+    right:0;
 }
 
 /******Media Queries*******/
