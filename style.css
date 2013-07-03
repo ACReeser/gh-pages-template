@@ -96,6 +96,20 @@ div[data-zeppelin-mothership] img{
     right:0;
 }
 
+.dnd{
+    padding:15px;
+    background-image:url("content/images/linedpaper.png");
+}
+.dnd iframe{
+    min-height:350%;
+    width:100%;
+}
+.dnd > div > #ClassBody div,span,p{
+    color:black;
+}
+.dnd > div > #ClassBody .PowerHeader > div{
+    color:white;
+}
 /******Media Queries*******/
 
 @media all and (min-width:40em) {

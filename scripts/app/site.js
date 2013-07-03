@@ -46,6 +46,8 @@ var site = angular.module('site', []).
       when('/icoico', {templateUrl: 'partials/ico.html'}).
       when('/zombie', {templateUrl: 'partials/zombie.html'}).
       when('/shell', {templateUrl: 'partials/shell.html'}).
+      when('/dnd', {templateUrl: 'partials/dnd.html'}).
+      when('/dnd/gunner', {templateUrl: 'partials/dnd/formattingWrapper.html'}).
       otherwise({redirectTo: '/'});
 }]);
 
