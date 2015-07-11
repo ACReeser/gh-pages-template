@@ -1,54 +1,610 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<meta charset='utf-8' />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
-    <link href='bars.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" media="all" href="style.css">
-	<title>Alex Reeser</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		.center{
+			text-align:center;
+		}
+		body{
+			margin:0;
+		}
+		header{
+		}
+		h1{
+			text-align:center;
+		}
+        .blue{
+            background-color:#1499D3;
+        }
+		.nav{
+			position:absolute;
+			top:144px;
+			background-color:#F15A29;
+			height: 90%;
+			
+			color:white;
+		}
+		.logo{
+			max-width:120px;
+			padding:12px;
+		}
+		#logoBackground{
+			background-color:white;
+			position:absolute;
+			left:0;
+			top:0;
+		}
+		.nav > ul{
+			width:144px;
+			list-style:none;
+			padding:0;
+			font-size:22px;
+		}
+		.nav > ul > li > a{
+			display:block;
+			color:white;
+			text-decoration:none;
+		}
+        @media screen and (min-width:769px) {
+            .nav > ul > li:hover {
+                background-color: #FD6938;
+            }
+		    .view{
+                margin:-100px 50px 0px 50px;
+                background-color:white;
+                min-height:300px;
+		    }
+        }
+		.view-container{
+			margin-left:144px;
+		}
+        
+        .play-button-container{
+            height:100%;
+            width:100%;
+            position: absolute;
+            background-color:rgba(0,0,0,.5);
+        }
+        .play-button{
+            padding:20px;
+            display:block;
+            margin:auto;
+            background-color:green;
+            color:white;
+            margin-top:25%;
+            cursor:pointer;
+        }
+        
+		.blue-to-orange{
+		}
+		.blue-to-orange.active{
+			-webkit-animation: RightBlueToOrange 1s linear;
+			-moz-animation: RightBlueToOrange 1s linear;
+			animation: RightBlueToOrange 1s linear;
+			animation-fill-mode: forwards;
+		}
+		.orange-to-blue.active{
+			-webkit-animation: RightOrangeToBlue 1s linear;
+			-moz-animation: RightOrangeToBlue 1s linear;
+			animation: RightOrangeToBlue 1s linear;
+			animation-fill-mode: forwards;
+		}
+
+        .dark-blue{
+            background-color:#4D6684;
+        }
+        
+        .light-blue{
+            background-color:#A7DBDB;
+        }
+        .dark-grey{
+            background-color:#3D3D3D;
+        }
+        .grey{
+            background-color:#E0E4CC;
+        }
+        .green{
+            background-color:#83AA30;
+        }
+        .orange{
+			background-color:#F15A29;
+        }
+        .light-orange{
+            background-color:#F38630;
+        }
+
+        header.animated-gradient {
+            background-size: 100% 600%;
+            -webkit-animation: PositionTopToBottom 1.5s ease forwards;
+            -moz-animation: PositionTopToBottom 1.5s ease forwards;
+            -o-animation: PositionTopToBottom 1.5s ease forwards;
+            animation: PositionTopToBottom 1.5s ease forwards;
+        }
+		@-webkit-keyframes PositionTopToBottom {
+            0%{background-position:50% 100%}
+            100%{background-position:50% 0}
+        }
+        @-moz-keyframes PositionTopToBottom {
+            0%{background-position:50% 100%}
+            100%{background-position:50% 0}
+        }
+        @keyframes PositionTopToBottom { 
+            0%{background-position:50% 100%}
+            100%{background-position:50% 0}
+        }
+
+		.logo-link > svg, .logo-link > img{		
+		  -webkit-transition: -webkit-transform .5s ease;
+			 -moz-transition: -moz-transform .5s ease;
+			   -o-transition: -o-transform .5s ease;
+				  transition: transform .5s ease;
+		}
+		
+		.logo-link > svg:hover, .logo-link > img:hover{		
+		  -webkit-transform: scale(1.1);
+			 -moz-transform: scale(1.1);
+			  -ms-transform: scale(1.1);
+			   -o-transform: scale(1.1);
+				  transform: scale(1.1);	
+		}
+		
+		.logo-link{
+			position:relative;
+			height: 144px;
+			width: 144px;
+			display: block;
+		}
+
+        @media screen and (max-width:768px){
+            .logo-link{
+                width:100px;
+                height:100px;
+            }
+            .nav{
+                top:0;
+                left:100px;
+                width: calc(100% - 100px);
+                height:100px;
+                background-color:transparent;
+            }
+            .nav > ul{
+                width:100%;
+                height:100%;
+                margin:0;
+            }
+            .nav > ul > li{
+                display:inline-block;
+                width:25%;
+                float:left;
+                line-height:100px;
+            }
+            .nav > ul > li > a{
+                font-size:20px;
+                height: 100%;
+                vertical-align:middle;
+            }
+            .hidden-phone{
+                display:none!important;
+            }
+            .view-container{
+                margin:0;
+            }
+        }
+	</style>
+	<title>alex</title>
 </head>
-<body ng-app="site" ng-controller="SiteCtrl" class="top-level">
-  <div class="navbar navbar-inverse">
-    <div class="navbar-inner" >
-      <a class="brand" href="#">Alex Reeser</a>
-      <ul class="nav">
-        <li class="dropdown" ng-class="{'active': site.tab == 's'}">
-          <a data-ng-click="goto('/shell')" href="">Shell</a>
-        </li>
-        <li class="dropdown" ng-class="{'active': site.tab == 'g'}">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="">Games</a>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-              <li ng-repeat="proj in unityProjects">
-                  <a data-ng-click="gotoUnity($index)" href="">{{proj}}</a>
-              </li>
-              <li class="divider"></li>
-              <li ng-repeat="proj in webProjects">
-                  <a data-ng-click="gotoWeb($index)" href="">{{proj}}</a>
-              </li>
-              <li class="divider"></li>
-              <li><a ng-click="goto('/python')" href="">Axel Delpoole</a></li>
-          </ul>  
-          </li>
-        <!--<li ng-class="{'active': site.tab == 'w'}" class="dropdown"><a data-toggle="dropdown" href="">Web Projects</a>-->
-        <!--  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">-->
-        <!--  </ul>  -->
-        <!--</li>-->
-        <li ng-class="{'active': site.tab == 'z'}"><a ng-click="goto('/zombie')" href="">Pitches</a></li>
-        <li ng-class="{'active': site.tab == 'r'}"><a ng-click="goto('/resume')" href="">Resume</a></li>
-        <li ng-class="{'active': site.tab == 'a'}"><a ng-click="goto('/about')" href="">About Me</a></li>
-      </ul>
-    </div>
-  </div>
-  <div ng-view="" class="partial">
-  
-  </div>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.js"></script>
-  <script src="scripts/app/site.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<body>
+	<header style="background:#1499D3;">
+		<canvas id="logoBackground" width="144" height="144"></canvas>
+		<a href="/" data-spa-href="home.html" class="logo-link">
+			<img src="arLogo.svg" class="logo svg-inline">
+		</a>
+	</header>
+	<h1 class="center">
+		
+	</h1>
+	<h2 class="center">
+		<strong></strong>
+	</h2>
+	<div class="nav center">
+		<ul>
+			<li>
+				<a href="bytes.html" data-spa-href="">bytes</a>
+			</li>
+			<li>
+				<a href="pixels.html" data-spa-href="">pixels</a>
+			</li>
+			<li>
+				<a href="words.html" data-spa-href="">words</a>
+			</li>
+			<li class="hidden-phone">
+				<span>&nbsp;</span>
+			</li>
+			<li>
+				<a href="about.html" data-spa-href="">about</a>
+			</li>
+		</ul>
+	</div>
+	<div class="view-container">		
+		<div class="view">
+		</div>
+	</div>
+	<script>
+	(function(){
+		// shim layer with setTimeout fallback
+		window.requestAnimFrame = (function(){
+			return  window.requestAnimationFrame       ||
+					window.webkitRequestAnimationFrame ||
+					window.mozRequestAnimationFrame    ||
+					function( callback ){
+						window.setTimeout(callback, 1000 / 60);
+					};
+		})();
+		function hslToRgb(h, s, l) {
+		    var r, g, b;
+
+		    if (s == 0) {
+		        r = g = b = l; // achromatic
+		    } else {
+		        var hue2rgb = function hue2rgb(p, q, t) {
+		            if (t < 0) t += 1;
+		            if (t > 1) t -= 1;
+		            if (t < 1 / 6) return p + (q - p) * 6 * t;
+		            if (t < 1 / 2) return q;
+		            if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+		            return p;
+		        }
+
+		        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+		        var p = 2 * l - q;
+		        r = hue2rgb(p, q, h + 1 / 3);
+		        g = hue2rgb(p, q, h);
+		        b = hue2rgb(p, q, h - 1 / 3);
+		    }
+
+		    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+		}
+		var logoBG = {
+		    init: function(){
+		        logoBG._canvas = document.getElementById('logoBackground');
+
+		        if ((window.innerWidth && window.innerWidth < 769) || (document.body.clientWidth < 769)) {
+		            logoBG._w = 100;
+		            logoBG._h = 100;
+		        } else {
+		            logoBG._w = 144;
+		            logoBG._h = 144;
+		        }
+				logoBG._canvas.setAttribute('width', logoBG._w);
+				logoBG._canvas.setAttribute('height', logoBG._h);
+		    },
+			continueAnim: function(type, length){
+				return (logoBG.current == type) && (Math.abs(new Date() - logoBG[type+'_runtime']) < length);
+			},
+            bytes_init: function () {
+				logoBG._bytes = [];
+				for(var i = 0; i < 50; i++){
+					logoBG._bytes.push({
+						text: (Math.random() > .5) ? "0" : "1",
+						x: Math.floor(Math.random() * 144),
+						y: 0,
+						speed: 3.5,
+						delay: Math.floor(Math.random()*30)
+					});
+				}
+			},
+			bytes: function(){
+				var ctx = logoBG._canvas.getContext("2d");
+				ctx.fillStyle = "rgba(0,0,0,.15)";
+				ctx.fillRect(0, 0, logoBG._w, logoBG._h);
+
+				ctx.fillStyle = '#83AA30';//'#00ff00';
+				ctx.font = "11px sans-serif";
+				for (var i = 0; i < logoBG._bytes.length; i++) {
+					if (logoBG._bytes[i].delay < 0){					
+						ctx.fillText(
+							logoBG._bytes[i].text,
+							logoBG._bytes[i].x, 
+							logoBG._bytes[i].y);
+							
+						logoBG._bytes[i].y += logoBG._bytes[i].speed;
+					} else {
+						logoBG._bytes[i].delay -= 1;
+					}
+				}
+				
+				if (logoBG.continueAnim('bytes', 2000)){
+					requestAnimFrame(logoBG.bytes);
+				}
+			},
+			words_corpus: [
+                "the quick,brown fox,jumped over,a lazy dog.,Jackie will,the  most expensive,zoology equipment.",
+                "grumpy wizards,make toxic,brew for the,evil queen,and jack.,just keep examining,every low bid",
+                "quick movement,of the enemy,will jeopardize,six gunboats,every low bid,quoted for,zinc etchings",
+                "few black,taxis drive,up major roads,on quiet,hazy nights,jinxed the,gnomes before,they vaporized"
+			],
+			words_init: function () {
+			    logoBG._words = logoBG.words_corpus[Math.floor(Math.random() * logoBG.words_corpus.length)].split(',');
+			    logoBG._currentLine = 0;
+			    logoBG._currentWord = 0;
+
+			    var ctx = logoBG._canvas.getContext("2d");
+			    ctx.fillStyle = "rgba(255,255,255,1)";
+			    ctx.fillRect(0, 0, logoBG._w, logoBG._h);
+			},
+			words: function () {
+			    if (logoBG._currentLine > logoBG._words.length-1)
+			        return;
+
+			    var ctx = logoBG._canvas.getContext("2d");
+			    var fontSize = 18;
+			    ctx.font = fontSize+"px monospace";
+			    ctx.fillStyle = "#000";
+			    var x = logoBG._currentWord * (fontSize-1),
+                    y = (logoBG._currentLine * (fontSize+2))+fontSize;
+			    ctx.fillText(logoBG._words[logoBG._currentLine][logoBG._currentWord],x,y);
+			    ctx.fillStyle = "#222";
+			    ctx.fillText(logoBG._words[logoBG._currentLine][logoBG._currentWord],x+1,y+1);
+
+			    logoBG._currentWord++;
+			    if (logoBG._currentWord > logoBG._words[logoBG._currentLine].length) {
+			        logoBG._currentWord = 0;
+			        logoBG._currentLine++;
+			    }
+
+			    //}
+
+			    if (logoBG.continueAnim('words', 2000)) {
+			        requestAnimFrame(logoBG.words);
+			    }
+			},
+			pixels_init: function () {
+			    logoBG._pixels = [];
+			    for (var i = 0; i < 144; i++) {
+			        var rgb = hslToRgb(.5916, Math.random(), Math.random());
+			        logoBG._pixels.push({
+			            color: 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')',
+			            x: (Math.floor(i / 12)) * 12,
+			            y: (i % 12) * 12,
+			            delay: Math.floor(Math.random() * 25),
+			            duration: 25 + Math.floor(Math.random() * 25)
+			        });
+			    }
+			},
+			pixels: function(){
+			    var ctx = logoBG._canvas.getContext("2d");
+			    //ctx.fillStyle = "rgba(0,0,0,.25)";
+			    //ctx.fillRect(0, 0, logoBG._w, logoBG._h);
+
+			    for (var i = 0; i < logoBG._pixels.length; i++) {
+			        if (logoBG._pixels[i].duration < 0) {
+			            ctx.fillStyle = "#F0F8FF";
+			        } else {
+			            ctx.fillStyle = logoBG._pixels[i].color;
+			        }
+			        if (logoBG._pixels[i].delay < 0) {
+			            ctx.fillRect(
+							logoBG._pixels[i].x,
+							logoBG._pixels[i].y,
+                            12, 12);
+                        logoBG._pixels[i].duration -= 1;
+			        } else {
+			            logoBG._pixels[i].delay -= 1;
+			        }
+			    }
+
+			    if (logoBG.continueAnim('pixels', 1500)) {
+			        requestAnimFrame(logoBG.pixels);
+			    }
+			},
+			about_init: function () {
+			    function pushPixel(x, y, w) {
+			        logoBG._sweep.push({
+			            x: x,
+			            y: y,
+                        w: w
+			        });
+			    }
+			    logoBG._sweep = [];
+			    pushPixel(0, 0, logoBG._w);
+			    for (var i = 0; i < 72; i++) {
+			        pushPixel(Math.floor(Math.random() * 144), -1, 1);
+			    }
+			    for (var i = 0; i < 36; i++) {
+			        pushPixel(Math.floor(Math.random() * 144), -2, 1);
+			    }
+			},
+			about: function () {
+			    var ctx = logoBG._canvas.getContext("2d");
+			    var currentPixel, lastY;
+			    ctx.fillStyle = "rgba(255,255,255,.2)"; //white
+			    ctx.fillRect(0, 0, logoBG._w, logoBG._sweep[0].y);
+
+			    for (var i = 0; i < logoBG._sweep.length; i++) {
+			        currentPixel = logoBG._sweep[i];
+			        ctx.fillStyle = "#f15a29"; //orange
+			        ctx.fillRect(
+						currentPixel.x,
+						currentPixel.y,
+                        currentPixel.w, 4);
+			        lastY = currentPixel.y;
+			        currentPixel.y += 4;
+			    }
+
+			    if (logoBG.continueAnim('about', 2000)) {
+			        requestAnimFrame(logoBG.about);
+			    }
+			},
+			home_init: function(){
+			    logoBG._hexes = [{ size: 50, stroke: "rgb(64, 64, 65)" }, { size: 25, stroke: "#f15a29" }, { size: 0, stroke: "#FFF", width: 4 }];
+			},
+			home_drawHex: function(ctx, hex){
+				var numberOfSides = 6,
+					Xcenter = logoBG._w / 2,
+					Ycenter = logoBG._h / 2;
+					
+				ctx.beginPath();         
+
+				for (var i = 0; i < numberOfSides+1; i++) {
+					var angle_deg = 60 * i   + 30
+					var angle_rad = Math.PI / 180 * angle_deg
+					var func = (i == 0) ? "moveTo" : "lineTo";
+					ctx[func](
+						Xcenter + hex.size * Math.cos(angle_rad), 
+					    Ycenter + hex.size * Math.sin(angle_rad));
+				}
+				ctx.strokeStyle = hex.stroke;
+				ctx.lineWidth = hex.width || 2;
+				ctx.stroke();
+			},
+			home: function() {
+			    var ctx = logoBG._canvas.getContext("2d");
+				
+				for (var i = 0; i < logoBG._hexes.length; i++) {
+					logoBG.home_drawHex(ctx, logoBG._hexes[i]);
+					logoBG._hexes[i].size += 2;
+				}
+				
+			    if (logoBG.continueAnim('home', 2000)) {
+			        requestAnimFrame(logoBG.home);
+			    }
+			},
+			run: function(type){
+				if (logoBG[type]){				
+				    logoBG[type+"_runtime"] = new Date();
+					logoBG.current = type;
+				    logoBG[type+"_init"]();
+					logoBG[type]();
+				}
+			}
+		};
+		window.logoBG = logoBG;
+		logoBG.init();
+		window.onresize = function(){
+			logoBG.init();
+		}
+		
+		var anim = {
+		    viewBackground: {
+		        _current: '#1499D3',
+			    bytes: '#83AA30',
+			    pixels: '#4D6684',
+			    words: '#3D3D3D',
+			    about: '#1499D3',
+			    home: '#1499D3'
+			},
+			currentState: ""
+		};
+		
+		window.anim = anim;
+		
+		var spa = {
+			404: "<h1>Page Not Found</h1>",
+			_get: function(aUrl, aCallback){
+				var anHttpRequest = new XMLHttpRequest();
+				anHttpRequest.onreadystatechange = function() { 
+					if (anHttpRequest.readyState == 4){
+						if (anHttpRequest.status == 200){
+							aCallback(anHttpRequest.responseText);
+						} else {
+							aCallback(spa[anHttpRequest.status]);
+						}
+					}
+				}
+
+				anHttpRequest.open( "GET", aUrl, true );            
+				anHttpRequest.send( null );
+			},
+			renderView: function(response){
+				(document.querySelectorAll('.view')[0]).innerHTML = response;
+                playIFrame.init();
+			},
+			onChange: function(toView){
+				var header = (document.querySelectorAll('header')[0]);
+				var viewName = (toView||"").replace(/.*\//g, '').replace('.html', '');
+				
+				if (header.classList.contains('animated-gradient'))
+				    header.classList.remove('animated-gradient');
+
+			    //css animation restart hack
+				header.offsetWidth = header.offsetWidth;
+
+				var nextBackground = anim.viewBackground[viewName];
+				header.setAttribute('style', 'background-image: linear-gradient(0deg, ' + anim.viewBackground._current + ', ' + anim.viewBackground._current + ', ' + nextBackground + ', ' + nextBackground + ');');
+				anim.viewBackground._current = nextBackground;
+				header.classList.add('animated-gradient');
+				//shield color
+				document.getElementById('RightShield').setAttribute('fill', nextBackground);
+				
+				header.classList.add('active');
+				logoBG.run(viewName);
+			},
+			onNavigate: function(){
+				var newView = this.dataset.spaHref;				
+				spa.navigate(newView);
+			},
+			navigate:function(toView, noTransition){
+				spa._get(toView, function(response){
+					if (!noTransition)
+						spa.onChange(toView);
+						
+					spa.renderView(response);
+				});
+			},
+			transformLinks: function(){
+				var links = document.querySelectorAll('[data-spa-href]');
+				for(var i = 0; i < links.length; i++){
+					links[i].addEventListener("click", spa.onNavigate);
+					if (links[i].dataset.spaHref == '')
+						links[i].setAttribute('data-spa-href', links[i].href);
+					links[i].href = 'javascript:void(0);';
+				}
+			}
+		};
+		spa.transformLinks();
+		spa.navigate('home.html', true);
+		window.spa = spa;
+        
+		var playIFrame = {
+            init: function(){
+                var players = document.querySelectorAll('.lazy-iframe');
+                for(var i = 0; i < players.length; i++){
+                    for(var j = 0; j < players[i].children.length; j++){
+                        if (players[i].children[j].tagName == "IFRAME"){
+                            players[i]._iframe = players[i].children[j];
+                        } else if (players[i].children[j].tagName == "DIV"){
+                            document.addEventListener('click',players[i].children[j], function(){
+                                this.parentNode._iframe.setAttribute('src', this.parentNode._iframe.dataset.lazySource);
+                                this.parentNode.removeChild(this);
+                            });
+                        }
+                    }
+                }
+            }
+        };
+        window.playIFrame = playIFrame;
+        playIFrame.init();
+        
+		document.addEventListener('DOMContentLoaded', function(){
+			var inlines = document.querySelectorAll('.svg-inline');
+			for(var i = 0; i < inlines.length; i++){
+				var currentInline = inlines[i];
+				var xhr = new XMLHttpRequest();
+				xhr.open("GET", currentInline.getAttribute('src'), true);
+				// Following line is just to be on the safe side;
+				// not needed if your server delivers SVG with correct MIME type
+				xhr.overrideMimeType("image/svg+xml");
+				xhr.send("");
+				xhr.onload = function(){
+					currentInline.parentNode.replaceChild(xhr.responseXML.documentElement, currentInline);
+				}
+			}
+			var inlines = document.querySelectorAll('.svg-inline');
+			for(var i = 0; i < inlines.length; i++){
+            }
+		});
+	})();
+	
+	</script>
 </body>
 </html>
