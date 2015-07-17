@@ -249,8 +249,8 @@
 			<li>
 				<a href="bytes.html" data-spa-href="">bytes</a>
 				<ul>
-					<li><a href="bytes.html" data-spa-href="">pro</a></li>
-					<li><a href="bytes.html" data-spa-href="">student</a></li>
+					<li><a href="pro.html" data-spa-href="">pro</a></li>
+					<li><a href="student.html" data-spa-href="">student</a></li>
 				</ul>
 			</li>
 			<li>
@@ -512,12 +512,17 @@
 			    }
 			},
 			run: function(type){
+				type = (logoBG[type]) ? type : logoBG.aliases[type];
 				if (logoBG[type]){				
 				    logoBG[type+"_runtime"] = new Date();
 					logoBG.current = type;
 				    logoBG[type+"_init"]();
 					logoBG[type]();
 				}
+			},
+			aliases: {
+				'pro': 'bytes',
+				'student': 'bytes'
 			}
 		};
 		window.logoBG = logoBG;
@@ -530,6 +535,8 @@
 		    viewBackground: {
 		        _current: '#1499D3',
 			    bytes: '#83AA30',
+			    pro: '#83AA30',
+			    student: '#83AA30',
 			    pixels: '#4D6684',
 			    words: '#3D3D3D',
 			    about: '#1499D3',
@@ -563,6 +570,7 @@
 			    newScript.src = "//s.imgur.com/min/embed.js";
 			    document.body.appendChild(newScript);
                 playIFrame.init();
+				spa.transformLinks();
 			},
 			onChange: function(toView){
 				var header = (document.querySelectorAll('header')[0]);
@@ -599,10 +607,12 @@
 			transformLinks: function(){
 				var links = document.querySelectorAll('[data-spa-href]');
 				for(var i = 0; i < links.length; i++){
-					links[i].addEventListener("click", spa.onNavigate);
-					if (links[i].dataset.spaHref == '')
-						links[i].setAttribute('data-spa-href', links[i].href);
-					links[i].href = 'javascript:void(0);';
+					if (links[i].href != 'javascript:void(0);'){
+						links[i].addEventListener("click", spa.onNavigate);
+						if (links[i].dataset.spaHref == '')
+							links[i].setAttribute('data-spa-href', links[i].href);
+						links[i].href = 'javascript:void(0);';
+					}
 				}
 			}
 		};
