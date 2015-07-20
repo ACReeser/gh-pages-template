@@ -292,11 +292,15 @@
 			anHttpRequest.open( "GET", aUrl, true );            
 			anHttpRequest.send( null );
 		},
-		renderView: function(response){
+		renderView: function(toView, response){
 			(document.querySelectorAll('.view')[0]).innerHTML = response;
-			var newScript = document.createElement('script');
+			
+			//bad, failed hack at getting new imgur embeds to work
+			var newScript = document.createElement('script');			
 			newScript.src = "//s.imgur.com/min/embed.js";
 			document.body.appendChild(newScript);
+			
+			window.history.pushState({}, toView, toView);
 			playIFrame.init();
 			spa.transformLinks();
 		},
@@ -329,7 +333,7 @@
 				if (!noTransition)
 					spa.onChange(toView);
 					
-				spa.renderView(response);
+				spa.renderView(toView, response);
 			});
 		},
 		transformLinks: function(){
