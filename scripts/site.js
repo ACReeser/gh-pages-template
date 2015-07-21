@@ -87,6 +87,7 @@
 				requestAnimFrame(logoBG.bytes);
 			}
 		},
+		//pangram selections!
 		words_corpus: [
 			"the quick,brown fox,jumped over,a lazy dog.,Jackie will,the  most expensive,zoology equipment.",
 			"grumpy wizards,make toxic,brew for the,evil queen,and jack.,just keep examining,every low bid",
@@ -98,9 +99,19 @@
 			logoBG._currentLine = 0;
 			logoBG._currentWord = 0;
 
-			var ctx = logoBG._canvas.getContext("2d");
-			ctx.fillStyle = "rgba(255,255,255,1)";
+			//var ctx = logoBG._canvas.getContext("2d");
+			//logoBG.words_bg(ctx);
+		},
+		words_bg: function(ctx, opacity){
+			ctx.fillStyle = "rgba(255,255,255,"+opacity+")";
 			ctx.fillRect(0, 0, logoBG._w, logoBG._h);
+		},
+		_drawLetter: function(ctx, line, letter, x, y, fontSize){
+			ctx.font = fontSize+"px monospace";
+			ctx.fillStyle = "#000";
+			ctx.fillText(logoBG._words[line][letter],x,y);
+			ctx.fillStyle = "#222";
+			ctx.fillText(logoBG._words[line][letter],x+1,y+1);
 		},
 		words: function () {
 			if (logoBG._currentLine > logoBG._words.length-1)
@@ -108,13 +119,17 @@
 
 			var ctx = logoBG._canvas.getContext("2d");
 			var fontSize = 18;
-			ctx.font = fontSize+"px monospace";
-			ctx.fillStyle = "#000";
 			var x = logoBG._currentWord * (fontSize-1),
 				y = (logoBG._currentLine * (fontSize+2))+fontSize;
-			ctx.fillText(logoBG._words[logoBG._currentLine][logoBG._currentWord],x,y);
-			ctx.fillStyle = "#222";
-			ctx.fillText(logoBG._words[logoBG._currentLine][logoBG._currentWord],x+1,y+1);
+				
+			if (logoBG._currentLine == 0){
+				logoBG.words_bg(ctx, .2);
+				for(var i = 0; i < logoBG._currentWord; i++){
+					logoBG._drawLetter(ctx, 0, i, i * (fontSize-1), y, fontSize);
+				}
+			} else {
+				logoBG._drawLetter(ctx, logoBG._currentLine, logoBG._currentWord,x,y, fontSize);
+			}
 
 			logoBG._currentWord++;
 			if (logoBG._currentWord > logoBG._words[logoBG._currentLine].length) {
