@@ -307,6 +307,13 @@
 			anHttpRequest.open( "GET", aUrl, true );            
 			anHttpRequest.send( null );
 		},
+		init: function(){
+			spa.transformLinks();
+			window.onpopstate = spa.onpopstate;
+		},
+		onpopstate: function(event){
+			spa.navigate(event.state.href, false);
+		},
 		renderView: function(toView, response){
 			(document.querySelectorAll('.view')[0]).innerHTML = response;
 			
@@ -315,7 +322,6 @@
 			newScript.src = "//s.imgur.com/min/embed.js";
 			document.body.appendChild(newScript);
 			
-			window.history.pushState({}, toView, toView);
 			playIFrame.init();
 			spa.transformLinks();
 		},
@@ -341,19 +347,22 @@
 		},
 		onNavigate: function(){
 			var newView = this.dataset.spaHref;				
-			spa.navigate(newView);
+			spa.navigate(newView, true);
 		},
-		navigate:function(toView, noTransition){
+		navigate:function(toView, forwards, noTransition){
 			spa._get(toView, function(response){
 				if (!noTransition)
 					spa.onChange(toView);
 					
 				spa.renderView(toView, response);
+				if (forwards)
+					window.history.pushState({"href":toView}, toView, toView);
 			});
 		},
 		transformLinks: function(){
 			var links = document.querySelectorAll('[data-spa-href]');
 			for(var i = 0; i < links.length; i++){
+				//this is a marker for 'already scanned', could be replaced with a custom attr or a class
 				if (links[i].href != 'javascript:void(0);'){
 					links[i].addEventListener("click", spa.onNavigate);
 					if (links[i].dataset.spaHref == '')
@@ -363,8 +372,8 @@
 			}
 		}
 	};
-	spa.transformLinks();
-	spa.navigate('home.html', true);
+	spa.init();
+	spa.navigate('home.html', true, true);
 	window.spa = spa;
 	
 	var playIFrame = {
