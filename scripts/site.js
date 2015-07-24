@@ -324,6 +324,7 @@
 			
 			playIFrame.init();
 			spa.transformLinks();
+			svgInliner.run();
 		},
 		onChange: function(toView){
 			var header = (document.querySelectorAll('header')[0]);
@@ -396,19 +397,28 @@
 	window.playIFrame = playIFrame;
 	playIFrame.init();
 	
-	document.addEventListener('DOMContentLoaded', function(){
-		var inlines = document.querySelectorAll('.svg-inline');
-		for(var i = 0; i < inlines.length; i++){
-			var currentInline = inlines[i];
-			var xhr = new XMLHttpRequest();
-			xhr.open("GET", currentInline.getAttribute('src'), true);
-			// Following line is just to be on the safe side;
-			// not needed if your server delivers SVG with correct MIME type
-			xhr.overrideMimeType("image/svg+xml");
-			xhr.send("");
-			xhr.onload = function(){
-				currentInline.parentNode.replaceChild(xhr.responseXML.documentElement, currentInline);
-			}
-		}
-	});
+	var svgInliner = {
+	    _inline: function(toInline){
+	        var xhr = new XMLHttpRequest();
+	        xhr.open("GET", toInline.getAttribute('src'), true);
+	        // Following line is just to be on the safe side;
+	        // not needed if your server delivers SVG with correct MIME type
+	        xhr.overrideMimeType("image/svg+xml");
+	        xhr.send("");
+	        xhr.onload = function () {
+                //sometimes if these are called back to back they can try and replace an svg that's in-flight
+	            if (toInline.parentNode)
+	                toInline.parentNode.replaceChild(xhr.responseXML.documentElement, toInline);
+	        }
+	    },
+	    run: function () {
+	        var inlines = document.querySelectorAll('.svg-inline');
+	        for(var i = 0; i < inlines.length; i++){
+	            svgInliner._inline(inlines[i]);
+	        }
+	    }
+	}
+	window.svgInliner = svgInliner;
+
+	document.addEventListener('DOMContentLoaded', svgInliner.run);
 })();
