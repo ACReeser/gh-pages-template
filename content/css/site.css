@@ -120,21 +120,6 @@ h1{
 	width:200px;
 }
 
-.blue-to-orange{
-}
-.blue-to-orange.active{
-	-webkit-animation: RightBlueToOrange 1s linear;
-	-moz-animation: RightBlueToOrange 1s linear;
-	animation: RightBlueToOrange 1s linear;
-	animation-fill-mode: forwards;
-}
-.orange-to-blue.active{
-	-webkit-animation: RightOrangeToBlue 1s linear;
-	-moz-animation: RightOrangeToBlue 1s linear;
-	animation: RightOrangeToBlue 1s linear;
-	animation-fill-mode: forwards;
-}
-
 .dark-blue{
 	background-color:#4D6684;
 }
@@ -241,10 +226,57 @@ header.animated-gradient {
 		margin:0 10px;
 	}
 }
+.transform-center{ -moz-transform-origin:center; -ms-transform-origin:center; -o-transform-origin:center; -webkit-transform-origin:center; transform-origin:center; }
 
-.delay-100{ -moz-animation-delay:100ms; -o-animation-delay:100ms; -webkit-animation-delay:100ms; animation-delay:100ms;}
-.delay-200{ -moz-animation-delay:200ms; -o-animation-delay:200ms; -webkit-animation-delay:200ms; animation-delay:200ms;}
-.delay-300{ -moz-animation-delay:300ms; -o-animation-delay:300ms; -webkit-animation-delay:300ms; animation-delay:300ms;}
-.delay-400{ -moz-animation-delay:400ms; -o-animation-delay:400ms; -webkit-animation-delay:400ms; animation-delay:400ms;}
-.delay-500{ -moz-animation-delay:500ms; -o-animation-delay:500ms; -webkit-animation-delay:500ms; animation-delay:500ms;}
-.delay-600{ -moz-animation-delay:600ms; -o-animation-delay:600ms; -webkit-animation-delay:600ms; animation-delay:600ms;}
+.delay-100{ -moz-animation-delay:100ms!important; -o-animation-delay:100ms!important; -webkit-animation-delay:100ms!important; animation-delay:100ms!important;}
+.delay-200{ -moz-animation-delay:200ms!important; -o-animation-delay:200ms!important; -webkit-animation-delay:200ms!important; animation-delay:200ms!important;}
+.delay-250{ -moz-animation-delay:250ms!important; -o-animation-delay:250ms!important; -webkit-animation-delay:250ms!important; animation-delay:250ms!important;}
+.delay-300{ -moz-animation-delay:300ms!important; -o-animation-delay:300ms!important; -webkit-animation-delay:300ms!important; animation-delay:300ms!important;}
+.delay-400{ -moz-animation-delay:400ms!important; -o-animation-delay:400ms!important; -webkit-animation-delay:400ms!important; animation-delay:400ms!important;}
+.delay-500{ -moz-animation-delay:500ms!important; -o-animation-delay:500ms!important; -webkit-animation-delay:500ms!important; animation-delay:500ms!important;}
+.delay-600{ -moz-animation-delay:600ms!important; -o-animation-delay:600ms!important; -webkit-animation-delay:600ms!important; animation-delay:600ms!important;}
+.delay-750{ -moz-animation-delay:750ms!important; -o-animation-delay:750ms!important; -webkit-animation-delay:750ms!important; animation-delay:750ms!important;}
+.delay-1000{ -moz-animation-delay:1000ms!important; -o-animation-delay:1000ms!important; -webkit-animation-delay:1000ms!important; animation-delay:1000ms!important;}
+.delay-1250{ -moz-animation-delay:1250ms!important; -o-animation-delay:1250ms!important; -webkit-animation-delay:1250ms!important; animation-delay:1250ms!important;}
+.delay-1500{ -moz-animation-delay:1500ms!important; -o-animation-delay:1500ms!important; -webkit-animation-delay:1500ms!important; animation-delay:1500ms!important;}
+.delay-1750{ -moz-animation-delay:1750ms!important; -o-animation-delay:1750ms!important; -webkit-animation-delay:1750ms!important; animation-delay:1750ms!important;}
+.delay-2000{ -moz-animation-delay:2000ms!important; -o-animation-delay:2000ms!important; -webkit-animation-delay:2000ms!important; animation-delay:2000ms!important;}
+
+
+@-webkit-keyframes OffOnOff {
+	0%, 24%, 76%, 100%{opacity:0}
+    25%, 75%{opacity:1}
+}
+@-moz-keyframes OffOnOff {
+	0%, 24%, 76%, 100%{opacity:0}
+    25%, 75%{opacity:1}
+}
+@keyframes OffOnOff { 
+	0%, 24%, 76%, 100%{opacity:0}
+    25%, 75%{opacity:1}
+}
+
+@-webkit-keyframes OnOffOn {
+	0%, 24%, 76%, 100%{opacity:1}
+    25%, 75%{opacity:0}
+}
+@-moz-keyframes OnOffOn {
+	0%, 24%, 76%, 100%{opacity:1}
+    25%, 75%{opacity:0}
+}
+@keyframes OnOffOn { 
+	0%, 24%, 76%, 100%{opacity:1}
+    25%, 75%{opacity:0}
+}
+.off-on-off {
+    -moz-animation: OffOnOff 4s linear infinite both;
+    -o-animation: OffOnOff 4s linear infinite both;
+    -webkit-animation: OffOnOff 4s linear infinite both;
+    animation: OffOnOff 4s linear infinite both;
+}
+.on-off-on {
+    -moz-animation: OnOffOn 4s linear infinite both;
+    -o-animation: OnOffOn 4s linear infinite both;
+    -webkit-animation: OnOffOn 4s linear infinite both;
+    animation: OnOffOn 4s linear infinite both;
+}
