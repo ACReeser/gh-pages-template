@@ -298,3 +298,17 @@ header.animated-gradient {
     margin-top:-65px;
     position:absolute;
 }
+.home-proj-label{
+  height:75px;
+  width:300px;
+  margin-top: 75px;
+  margin-bottom: -75px;
+  position: relative;
+}
+.home-br-label{
+  height:75px;
+  width:300px;
+  margin-top: 75px;
+  margin-bottom: -75px;
+  position: relative;
+}
