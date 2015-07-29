@@ -347,34 +347,41 @@
 			logoBG.run(viewName);
 		},
 		onNavigate: function(){
-			var newView = this.dataset.spaHref;				
+		    var newView = this.dataset.spaHref;
+		    console.log("onNavigating to " + newView);
 			spa.navigate(newView, true);
 		},
-		navigate:function(toView, forwards, noTransition){
-			spa._get(toView, function(response){
+		navigate: function (toView, forwards, noTransition) {
+		    var url = '/partials/' + toView + '.partial.html';
+			spa._get(url, function(response){
 				if (!noTransition)
 					spa.onChange(toView);
 					
 				spa.renderView(toView, response);
 				if (forwards)
-					window.history.pushState({"href":toView}, toView, toView);
+				    window.history.pushState({ "href": toView }, toView, toView + ".html");
 			});
+		},
+		viewNameFromHref: function (href) {
+		    console.log("href turned into viewname of " + (href || "").replace(/.*\//g, '').replace('.html', ''));
+		    return (href || "").replace(/.*\//g, '').replace('.html', '');
 		},
 		transformLinks: function(){
 			var links = document.querySelectorAll('[data-spa-href]');
 			for(var i = 0; i < links.length; i++){
 				//this is a marker for 'already scanned', could be replaced with a custom attr or a class
 				if (links[i].href != 'javascript:void(0);'){
-					links[i].addEventListener("click", spa.onNavigate);
+				    links[i].addEventListener("click", spa.onNavigate);
+				    console.log("transforming link with href of " + links[i].href);
 					if (links[i].dataset.spaHref == '')
-						links[i].setAttribute('data-spa-href', links[i].href);
+						links[i].setAttribute('data-spa-href', spa.viewNameFromHref(links[i].href));
 					links[i].href = 'javascript:void(0);';
 				}
 			}
 		}
 	};
 	spa.init();
-	spa.navigate('home.html', true, true);
+	spa.navigate('home', true, true);
 	window.spa = spa;
 	
 	var playIFrame = {

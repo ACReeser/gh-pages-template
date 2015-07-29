@@ -4,10 +4,10 @@
         pkg: grunt.file.readJSON('package.json'),
         zetzer: {
             main: {
-                //options: {
-                //    partials: "content",
-                //    templates: "templates"
-                //},
+                options: {
+                    partials: "partials",
+                    templates: "templates"
+                },
                 files: [
                   {
                       expand: true,
