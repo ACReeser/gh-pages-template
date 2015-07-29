@@ -9,7 +9,7 @@
 <body>
 	<header style="background:#1499D3;">
 		<canvas id="logoBackground" width="144" height="144"></canvas>
-		<a href="/" data-spa-href="home.html" class="logo-link">
+		<a href="/" data-spa-href="" class="logo-link">
 			<img src="content/images/arLogoPerspective.svg" class="logo svg-inline">
 		</a>
 	</header>
@@ -36,9 +36,10 @@
 			</li>
 		</ul>
 	</div>
-	<div class="view-container">		
-		<div class="view">
-		</div>
+	<div class="view-container">	
+        <div class="view {{= it.wrapper_class }}">
+            {{= it.document }}
+        </div>
 	</div>
 	<script src="scripts/site.js"></script>
 </body>

@@ -289,7 +289,53 @@
 	};
 	
 	window.anim = anim;
-	
+
+
+	var playIFrame = {
+	    init: function () {
+	        var players = document.querySelectorAll('.lazy-iframe');
+	        for (var i = 0; i < players.length; i++) {
+	            for (var j = 0; j < players[i].children.length; j++) {
+	                if (players[i].children[j].tagName == "IFRAME") {
+	                    players[i]._iframe = players[i].children[j];
+	                } else if (players[i].children[j].tagName == "DIV") {
+	                    players[i].children[j].addEventListener('click', function () {
+	                        this.parentNode._iframe.setAttribute('src', this.parentNode._iframe.dataset.src);
+	                        this.parentNode.removeChild(this);
+	                    });
+	                }
+	            }
+	        }
+	    }
+	};
+	window.playIFrame = playIFrame;
+	playIFrame.init();
+
+	var svgInliner = {
+	    _inline: function (toInline, callback) {
+	        var xhr = new XMLHttpRequest();
+	        xhr.open("GET", toInline.getAttribute('src'), true);
+	        // Following line is just to be on the safe side;
+	        // not needed if your server delivers SVG with correct MIME type
+	        xhr.overrideMimeType("image/svg+xml");
+	        xhr.send("");
+	        xhr.onload = function () {
+	            //sometimes if these are called back to back they can try and replace an svg that's in-flight
+	            if (toInline.parentNode)
+	                toInline.parentNode.replaceChild(xhr.responseXML.documentElement, toInline);
+                if (callback)
+	                callback();
+	        }
+	    },
+	    run: function (selector, callback) {
+	        var inlines = document.querySelectorAll(selector || '.svg-inline');
+	        for (var i = 0; i < inlines.length; i++) {
+	            svgInliner._inline(inlines[i], callback);
+	        }
+	    }
+	}
+	window.svgInliner = svgInliner;
+    	
 	var spa = {
 		404: "<h1>Page Not Found</h1>",
 		_get: function(aUrl, aCallback){
@@ -312,21 +358,29 @@
 			window.onpopstate = spa.onpopstate;
 		},
 		onpopstate: function(event){
-			spa.navigate(event.state.href, false);
+			spa.navigate(event.state.viewName, false);
 		},
 		renderView: function(toView, response){
 			(document.querySelectorAll('.view')[0]).innerHTML = response;
-			
-			//bad, failed hack at getting new imgur embeds to work
-			var newScript = document.createElement('script');			
-			newScript.src = "//s.imgur.com/min/embed.js";
-			document.body.appendChild(newScript);
-			
-			playIFrame.init();
-			spa.transformLinks();
-			svgInliner.run();
+			spa.onRenderView();
 		},
-		onChange: function(toView){
+		onRenderView: function () {
+		    //bad, failed hack at getting new imgur embeds to work
+		    var newScript = document.createElement('script');
+		    newScript.src = "//s.imgur.com/min/embed.js";
+		    document.body.appendChild(newScript);
+
+		    playIFrame.init();
+		    spa.transformLinks();
+		    svgInliner.run();
+		},
+		runTransition: function (toView) {
+            //this block is for not transitioning to 'home'
+		    if (!toView) {
+		        toView = spa.viewNameFromHref(window.location.href);
+		        if (toView == "")
+		            return;
+		    }
 			var header = (document.querySelectorAll('header')[0]);
 			var viewName = (toView||"").replace(/.*\//g, '').replace('.html', '');
 			
@@ -348,22 +402,30 @@
 		},
 		onNavigate: function(){
 		    var newView = this.dataset.spaHref;
-		    console.log("onNavigating to " + newView);
 			spa.navigate(newView, true);
 		},
 		navigate: function (toView, forwards, noTransition) {
-		    var url = '/partials/' + toView + '.partial.html';
+		    var url, title, pageName;
+		    if ((toView == "") || (toView == "home")) {
+		        toView = "home";
+		        url = "/partials/index.partial.html", title = "Home", pageName = "/";
+		    } else {
+		        url = '/partials/' + toView + '.partial.html';
+		        title = toView;
+                pageName = toView + ".html"
+		    }
 			spa._get(url, function(response){
 				if (!noTransition)
-					spa.onChange(toView);
+					spa.runTransition(toView);
 					
 				spa.renderView(toView, response);
 				if (forwards)
-				    window.history.pushState({ "href": toView }, toView, toView + ".html");
+				    window.history.pushState({ "viewName": toView }, title, pageName);
 			});
 		},
 		viewNameFromHref: function (href) {
-		    console.log("href turned into viewname of " + (href || "").replace(/.*\//g, '').replace('.html', ''));
+		    if (href == "")
+		        return "home";
 		    return (href || "").replace(/.*\//g, '').replace('.html', '');
 		},
 		transformLinks: function(){
@@ -372,7 +434,6 @@
 				//this is a marker for 'already scanned', could be replaced with a custom attr or a class
 				if (links[i].href != 'javascript:void(0);'){
 				    links[i].addEventListener("click", spa.onNavigate);
-				    console.log("transforming link with href of " + links[i].href);
 					if (links[i].dataset.spaHref == '')
 						links[i].setAttribute('data-spa-href', spa.viewNameFromHref(links[i].href));
 					links[i].href = 'javascript:void(0);';
@@ -381,51 +442,12 @@
 		}
 	};
 	spa.init();
-	spa.navigate('home', true, true);
 	window.spa = spa;
-	
-	var playIFrame = {
-		init: function(){
-			var players = document.querySelectorAll('.lazy-iframe');
-			for(var i = 0; i < players.length; i++){
-				for(var j = 0; j < players[i].children.length; j++){
-					if (players[i].children[j].tagName == "IFRAME"){
-						players[i]._iframe = players[i].children[j];
-					} else if (players[i].children[j].tagName == "DIV"){
-						players[i].children[j].addEventListener('click', function () {
-							this.parentNode._iframe.setAttribute('src', this.parentNode._iframe.dataset.src);
-							this.parentNode.removeChild(this);
-						});
-					}
-				}
-			}
-		}
-	};
-	window.playIFrame = playIFrame;
-	playIFrame.init();
-	
-	var svgInliner = {
-	    _inline: function(toInline){
-	        var xhr = new XMLHttpRequest();
-	        xhr.open("GET", toInline.getAttribute('src'), true);
-	        // Following line is just to be on the safe side;
-	        // not needed if your server delivers SVG with correct MIME type
-	        xhr.overrideMimeType("image/svg+xml");
-	        xhr.send("");
-	        xhr.onload = function () {
-                //sometimes if these are called back to back they can try and replace an svg that's in-flight
-	            if (toInline.parentNode)
-	                toInline.parentNode.replaceChild(xhr.responseXML.documentElement, toInline);
-	        }
-	    },
-	    run: function () {
-	        var inlines = document.querySelectorAll('.svg-inline');
-	        for(var i = 0; i < inlines.length; i++){
-	            svgInliner._inline(inlines[i]);
-	        }
-	    }
-	}
-	window.svgInliner = svgInliner;
 
-	document.addEventListener('DOMContentLoaded', svgInliner.run);
+	document.addEventListener('DOMContentLoaded', function () {
+	    svgInliner.run('.logo.svg-inline', function () {
+	        spa.onRenderView();
+	        spa.runTransition();
+	    })
+	});
 })();
