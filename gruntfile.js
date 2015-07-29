@@ -10,6 +10,7 @@
                     expand: true,
                     rename: function (dest, src) {
                         grunt.log.writeln('rename ' + dest + ' ' + src);
+                        //remove the partials directory and change the extension
                         return dest + src.replace('partials/', '').replace('.partial.html', '.dot.html');
                     }
                 }],
@@ -42,5 +43,7 @@
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-zetzer');
 
+    //run copy to turn *.partials into dot_partials/ after prepending template tag
+    //then run zetzer to turn dot_partials/*.dot.html into /*.html
     grunt.registerTask('default', ['copy', 'zetzer']);
 };

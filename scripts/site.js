@@ -353,17 +353,21 @@
 			anHttpRequest.open( "GET", aUrl, true );            
 			anHttpRequest.send( null );
 		},
-		init: function(){
+		init: function () {
+            //the additional call to transform links gets our navigation buttons working
 			spa.transformLinks();
 			window.onpopstate = spa.onpopstate;
 		},
+        //called when the back button is used and we've done SPA navigation
 		onpopstate: function(event){
 			spa.navigate(event.state.viewName, false);
 		},
+        //puts the partial into the view
 		renderView: function(toView, response){
 			(document.querySelectorAll('.view')[0]).innerHTML = response;
 			spa.onRenderView();
 		},
+        //responsible for any additional rendering in the view
 		onRenderView: function () {
 		    //bad, failed hack at getting new imgur embeds to work
 		    var newScript = document.createElement('script');
@@ -374,6 +378,8 @@
 		    spa.transformLinks();
 		    svgInliner.run();
 		},
+	    //makes the header background and right-side of the logo shield change from color to color
+        //this might belong in the logoBG module
 		runTransition: function (toView) {
             //this block is for not transitioning to 'home'
 		    if (!toView) {
@@ -406,9 +412,10 @@
 		},
 		navigate: function (toView, forwards, noTransition) {
 		    var url, title, pageName;
+            //the index has some special rules
 		    if ((toView == "") || (toView == "home")) {
 		        toView = "home";
-		        url = "/partials/index.partial.html", title = "Home", pageName = "/";
+		        url = "/partials/index.partial.html", title = "Home", pageName = "/"; //a pageName of empty string does not affect the address bar
 		    } else {
 		        url = '/partials/' + toView + '.partial.html';
 		        title = toView;
@@ -423,8 +430,9 @@
 				    window.history.pushState({ "viewName": toView }, title, pageName);
 			});
 		},
+        //given a relative or full URL, return the view name
 		viewNameFromHref: function (href) {
-		    if (href == "")
+		    if (href == "") //this might should also catch undefined, /, and http:\/\/.*\/?
 		        return "home";
 		    return (href || "").replace(/.*\//g, '').replace('.html', '');
 		},
@@ -434,6 +442,7 @@
 				//this is a marker for 'already scanned', could be replaced with a custom attr or a class
 				if (links[i].href != 'javascript:void(0);'){
 				    links[i].addEventListener("click", spa.onNavigate);
+                    //if the spaHref is blank, mine the view from the real href
 					if (links[i].dataset.spaHref == '')
 						links[i].setAttribute('data-spa-href', spa.viewNameFromHref(links[i].href));
 					links[i].href = 'javascript:void(0);';
@@ -444,7 +453,10 @@
 	spa.init();
 	window.spa = spa;
 
+    //after our DOM is loaded...
 	document.addEventListener('DOMContentLoaded', function () {
+	    //we need the logo inlined ahead of all the others
+        //so we can run the transition (which requires an inlined svg)
 	    svgInliner.run('.logo.svg-inline', function () {
 	        spa.onRenderView();
 	        spa.runTransition();
