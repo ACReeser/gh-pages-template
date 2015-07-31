@@ -3,12 +3,12 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 380 250" enable-background="new 0 0 380 250" xml:space="preserve">
-<g class="animated flipInY delay-500 transform-center">
+<g class="scrollspy scroll-animate flipInY delay-500 transform-center">
 	<rect x="100.7" y="86.2" fill="#26A8E0" width="176.5" height="79.1"/>
 	<text transform="matrix(1 0 0 1 153.7291 138.3339)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="44">and</text>
 </g>
 <g>
-	<g class="animated flipInX transform-center">
+	<g class="scrollspy scroll-animate flipInX transform-center">
 		<g>
 			<g>
 				<polygon fill="#F15B2A" points="141.1,86.2 48.8,86.2 2.5,46.7 48.8,7.1 141.1,7.1 187.4,46.7 				"/>
@@ -23,7 +23,7 @@
 	<rect y="6.5" fill="none" width="380" height="79.8"/>
 </g>
 <g>
-	<g class="animated flipInX delay-1000  transform-center">
+	<g class="scrollspy scroll-animate flipInX delay-1000  transform-center">
 		<g>
 			<g>
 				<polygon fill="#F15B2A" points="142.7,244.4 50.4,244.4 4.1,204.9 50.4,165.3 142.7,165.3 189,204.9 				"/>

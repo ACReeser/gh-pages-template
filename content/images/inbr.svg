@@ -3,7 +3,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 400 100" enable-background="new 0 0 400 100" xml:space="preserve">
-<g class="animated flipInX transform-center">
+<g class="scrollspy scroll-animate flipInX transform-center">
 	<g>
 		<g>
 			<polyline fill="#F15B2A" points="13.6,50 59.8,10.4 152.2,10.4 198.4,50 152.2,89.6 59.8,89.6 13.6,50 			"/>
