@@ -71,6 +71,23 @@ h1{
 	color:white;
 	text-decoration:none;
 }
+
+.nav > ul > li a.inline-block{
+    display:inline-block;
+      -webkit-transition: -webkit-transform .5s ease;
+	     -moz-transition: -moz-transform .5s ease;
+	       -o-transition: -o-transform .5s ease;
+		      transition: transform .5s ease;
+}
+    .nav > ul > li a.inline-block:hover {
+        background-color: transparent;
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2); 
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+
 @media screen and (min-width:769px) {
 	.nav li > a:hover {
 		background-color: #FD6938;
@@ -196,6 +213,7 @@ header.animated-gradient {
 	width: 144px;
 	display: block;
 }
+
 
 @media screen and (max-width:768px){
 	h1{

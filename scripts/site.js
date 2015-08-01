@@ -378,6 +378,7 @@
             spa.transformLinks();
             svgInliner.run(null, scrollspy.init);
             scrollspy.init();
+            preventKey.run();
         },
         //makes the header background and right-side of the logo shield change from color to color
         //this might belong in the logoBG module
@@ -459,7 +460,7 @@
         spyMap: {},
         init: function(){
             var sections = document.querySelectorAll(".scrollspy");
-            console.log("found some scrollspy: " + sections.length)
+            //console.log("found some scrollspy: " + sections.length)
 
             for (var i = 0; i < sections.length; i++) {
                 scrollspy.spyMap["_id_" + scrollspy.ids] = sections[i];
@@ -474,12 +475,12 @@
             window.onscroll = this.onscroll.bind(this);
         },
         onscroll: function(){
-            console.log("scrolling");
+            //console.log("scrolling");
             for (id in scrollspy.spyMap) {
                 if (this.spyMap[id].getBoundingClientRect().top <= window.innerHeight / 2) {
                     //todo: add group, to add at same time given a css selector
                     if (scrollspy.spyMap[id].classList.contains('scroll-animate') && !scrollspy.spyMap[id].classList.contains('animated')) {
-                        console.log('adding');
+                        //console.log('adding');
                         //restart hack
                         //scrollspy.spyMap[id].offsetWidth = scrollspy.spyMap[id].offsetWidth;
                         //webkit restart hack
@@ -492,7 +493,7 @@
                         scrollspy.spyMap[id].classList.remove('animated');
                         //webkit restart hack
                         scrollspy.spyMap[id].style.webkitAnimation = 'none';
-                        console.log('removing');
+                        //console.log('removing');
                     }
                 }
             }
@@ -500,6 +501,22 @@
         }
     }
     window.scrollspy = scrollspy;
+
+    /*var preventKey = {
+        run: function () {
+            var _elements = document.querySelectorAll("[data-prevent-key]");
+            for (var i = 0; i < prevents.length; i++) {
+                document.addEventListener('onkeydown', (function () {
+                    var keyCode = _elements[i].dataset.preventKey;
+                    return function (event) {
+                        event.preventDefault();
+                        return !(event.keyCode == keyCode);
+                    }
+                })());
+            }
+        }
+    }
+    window.preventKey = preventKey;*/
 
 
     //after our DOM is loaded...
