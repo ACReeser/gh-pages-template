@@ -378,7 +378,7 @@
             spa.transformLinks();
             svgInliner.run(null, scrollspy.init);
             scrollspy.init();
-            //preventKey.run();
+            preventKey.run();
         },
         //makes the header background and right-side of the logo shield change from color to color
         //this might belong in the logoBG module
@@ -526,21 +526,32 @@
     }
     window.scrollspy = scrollspy;
 
-    /*var preventKey = {
+    var preventKey = {
+        init: function () {
+            document.addEventListener('keydown', preventKey._listener);
+        },
+        _listener: function (event) {
+            var allow = true;
+            for (var i = 0; i < preventKey.keyCodes.length; i++) {
+                if (event.keyCode === preventKey.keyCodes[i]) {
+                    allow = false;
+                    break;
+                }
+            }
+            if (!allow)
+                event.preventDefault();
+            return allow;
+        },
         run: function () {
+            preventKey.keyCodes = [];
             var _elements = document.querySelectorAll("[data-prevent-key]");
-            for (var i = 0; i < prevents.length; i++) {
-                document.addEventListener('onkeydown', (function () {
-                    var keyCode = _elements[i].dataset.preventKey;
-                    return function (event) {
-                        event.preventDefault();
-                        return !(event.keyCode == keyCode);
-                    }
-                })());
+            for (var i = 0; i < _elements.length; i++) {
+                preventKey.keyCodes.push(parseInt(_elements[i].dataset.preventKey));
             }
         }
     }
-    window.preventKey = preventKey;*/
+    preventKey.init();
+    window.preventKey = preventKey;
 
 
     //after our DOM is loaded...

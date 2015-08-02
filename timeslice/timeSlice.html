@@ -49,7 +49,7 @@
 			}
 			console.log(100*(xp/nextTier));
 			$('#xpBar').progressbar("value", 100*(xp/nextTier));
-			$('#xpLabel').html('XP: '+xp);
+			$('#xpLabel').html('XP: ' + xp);
 			$('#Rank').html('Rank: ' + rank);
 		}
 		
@@ -61,9 +61,10 @@
 			$('#comboDialog').dialog({
 				autoOpen: false,
 				show: "clip",
-				hide: "clip"
+				hide: "clip",
+                width: "500px"
 			});
-			$('.button-bottom').button();
+			$('.button-bottom, #sliceButton').button();
 			$(document).keydown(function(event) {
 				if((event.keyCode == 83) && ($('#slowBar').progressbar('value') > 0)) {
 					//alert('S was pressed');
@@ -85,7 +86,9 @@
 					}				
 				}
 			});
-			
+			$('#sliceButton').click(function () {
+			    calc = true;
+			});
 			$('.button-bottom').click(function(event) {
 				ShowCombos();
 				if ($('#comboDialog').is(':visible')){
@@ -330,18 +333,24 @@
 			context.fillStyle = 'black';
 			context.fillText(('0'+dateObj.getMinutes()).slice(-2)+ 'm '+('0'+dateObj.getSeconds()).slice(-2)+'s '+("000"+dateObj.getMilliseconds()).slice(-3)+'ms', x, y);
 		}
+		document.addEventListener('keydown', function (event) {
+		    if (event.keyCode == 32) {
+		        event.preventDefault();
+		        return false;
+		    }
+		});
 	</script>
 </head>
 <body style="background-color:white">
-	<div style="position:absolute;right:0px;top:80px;border:3px solid;border-radius:25px;width:200;">
-		<h3 class="ui-widget-header" style="margin-left:auto;margin-right:auto;width:50%">Time Slice!</h3>
-		<p id="Score" style="margin-left:auto;margin-right:auto;width:50%">Score: 0</p>
-		<p id="Multiplier" style="margin-left:auto;margin-right:auto;width:50%">Multiplier: 1x</p>
-		<p id="highSingle" style="margin-left:auto;margin-right:auto;width:50%">Highest Score: 0</p>
-		<p id="highX" style="margin-left:auto;margin-right:auto;width:50%">Highest Multiplier: 1x</p>
-		<p id="Rank" style="margin-left:auto;margin-right:auto;width:50%">Rank: 1</p>
-		<p id="Combos" style="margin-left:auto;margin-right:auto;width:50%">0/14 Combos</p>
-		<div style="margin-left:auto;margin-right:auto;width:50%">
+	<div style="position:absolute;right:0;top:80px;width:183px;text-align:center;">
+		<h3 class="ui-widget-header">Time Slice!</h3>
+		<p id="Score">Score: 0</p>
+		<p id="Multiplier">Multiplier: 1x</p>
+		<p id="highSingle">High Score: 0</p>
+		<p id="highX"     >High Multiplier: 1x</p>
+		<p id="Rank"      >Rank: 1</p>
+		<p id="Combos"    >0/14 Combos</p>
+		<div style="margin-bottom:10px;">
 			<button class="button-bottom">View Combos</button>
 		</div>
 	</div>
@@ -356,7 +365,10 @@
 	<div id="Grab"  title="Score!" class="grab-position" >
 		<span style="font-size:250%;" id="GrabText">Let's Play</span>
 	</div>
-	<div id="xpBar" style="width:500px; height:40px; position:absolute;top:350px;"></div><label id='xpLabel' for="xpBar" style="position:absolute;top:320px;">XP</label>
-	<div id="slowBar" style="width:500px; height:40px; position:absolute;top:415px;"></div><label id='slowLabel' for="slowBar" style="position:absolute;top:395px;">Slow Time:</label>
+	<div id="xpBar" style="width:500px; height:40px; position:absolute;top:270px;"></div><strong id='xpLabel' style="position:absolute;top:320px;">XP</strong>
+	<div id="slowBar" style="width:500px; height:40px; position:absolute;top:344px;"></div><strong id='slowLabel' style="position:absolute;top:395px;">Time Slow</strong>
+    <div style ="width:500px; height:40px; position:absolute;top:450px;">
+        <button id="sliceButton" style="width:100%;">Slice!</button>
+    </div>
 </body>
 </html>
