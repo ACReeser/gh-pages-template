@@ -41,13 +41,13 @@
 		
 		function UpdateXP(newXP){
 			xp += newXP;
-			if (xp > nextTier){
+			while (xp > nextTier){
 				rank +=1;
-				nextTier = nextTier + nextTier/2;
-				$('#slowBar').progressbar("value", 100);
 				xp = xp-nextTier;
+				nextTier = Math.ceil(nextTier * 1.5);
+				$('#slowBar').progressbar("value", 100);
 			}
-			console.log(100*(xp/nextTier));
+			//console.log(100*(xp/nextTier));
 			$('#xpBar').progressbar("value", 100*(xp/nextTier));
 			$('#xpLabel').html('XP: ' + xp);
 			$('#Rank').html('Rank: ' + rank);
