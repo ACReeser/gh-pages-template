@@ -89,12 +89,24 @@ h1{
     }
 
 @media screen and (min-width:769px) {
+    header{
+        min-height:144px;
+    }
 	.nav li > a:hover {
 		background-color: #FD6938;
 	}
 	.nav li > ul > li{
 		background-color:#DA5023;
 	}
+    .nav ul.affixed{
+        position:fixed;
+        top:144px;
+    }
+    .logo-container.affixed{
+        position:fixed;
+        top:0;
+        z-index:1;
+    }
 	/*.nav li > ul > li > a:hover {
 		background-color: #FF906B;
 	}*/

@@ -8,13 +8,15 @@
 </head>
 <body>
 	<header style="background:#1499D3;">
-		<canvas id="logoBackground" width="144" height="144"></canvas>
-		<a href="/" data-spa-href="" class="logo-link">
-			<img src="content/images/arLogoPerspective.svg" class="logo svg-inline">
-		</a>
+        <div class="logo-container affixed">
+            <canvas id="logoBackground" width="144" height="144"></canvas>
+            <a href="/" data-spa-href="" class="logo-link">
+                <img src="content/images/arLogoPerspective.svg" class="logo svg-inline">
+            </a>
+        </div>
 	</header>
 	<div class="nav center">
-		<ul>
+		<ul class="scrollspy" data-ceiling="0" data-affix="" data-offset="144">
 			<li>
 				<a href="bytes.html" data-spa-href="">bytes</a>
 				<ul>

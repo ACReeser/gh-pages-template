@@ -378,7 +378,7 @@
             spa.transformLinks();
             svgInliner.run(null, scrollspy.init);
             scrollspy.init();
-            preventKey.run();
+            //preventKey.run();
         },
         //makes the header background and right-side of the logo shield change from color to color
         //this might belong in the logoBG module
@@ -455,6 +455,21 @@
     spa.init();
     window.spa = spa;
 
+    // documentation for scrollspy + affix:
+    /// first put 'scrollspy' in your element's classes 
+    /// then add this on your element
+    /// data-affix="" 
+    /// the plugin will set the 'affixed' class on your element
+    /// when the "ceiling" of the viewport passes up the top of the element
+    /// the "ceiling" defaults to half of the viewport's height
+    /// there are two modifier attributes:
+    ///   data-ceiling="number" 
+    /// this lets you set where in the viewport the affix should happen
+    /// for example: data-ceiling="0" will cause 'affixed' as soon as the viewport passes the element
+    ///   data-offset="number"
+    /// this lets you offset the top of the element upwards with a constant
+    /// for example: data-offset="144" will cause the plugin to treat the element as 144px closer to the top
+    /// this is useful for things like navbars that move with headers
     var scrollspy = {
         ids: 0,
         spyMap: {},
@@ -469,31 +484,40 @@
                 if (sections[i].classList.contains('scroll-animate')) {
                     sections[i].style.webkitAnimation = 'none';
                     sections[i].style.opacity = 0;
+                } else if (sections[i].hasAttribute('data-affix')) {
+                    sections[i].dataset.original = sections[i].getBoundingClientRect().top;
                 }
             }
 
             window.onscroll = this.onscroll.bind(this);
         },
         onscroll: function(){
-            //console.log("scrolling");
             for (id in scrollspy.spyMap) {
-                if (this.spyMap[id].getBoundingClientRect().top <= window.innerHeight / 2) {
+                var spyItem = scrollspy.spyMap[id];
+                var offset = spyItem.hasAttribute('data-offset') ? parseInt(spyItem.dataset.offset) : 0;
+                var ceiling = spyItem.hasAttribute('data-ceiling') ? parseInt(spyItem.dataset.ceiling) : (window.innerHeight / 2);
+                var top = spyItem.getBoundingClientRect().top - offset;
+
+                //console.log("scrollY: " + window.scrollY + " ceiling: " + ceiling + " top: " + top);
+
+                if ((window.scrollY > 0) && (top < ceiling)) {
+                    if (spyItem.hasAttribute('data-affix') && !spyItem.classList.contains('affixed'))
+                        spyItem.classList.add('affixed');
                     //todo: add group, to add at same time given a css selector
-                    if (scrollspy.spyMap[id].classList.contains('scroll-animate') && !scrollspy.spyMap[id].classList.contains('animated')) {
-                        //console.log('adding');
-                        //restart hack
-                        //scrollspy.spyMap[id].offsetWidth = scrollspy.spyMap[id].offsetWidth;
+                    if (spyItem.classList.contains('scroll-animate') && !spyItem.classList.contains('animated')) {
                         //webkit restart hack
-                        scrollspy.spyMap[id].style.opacity = '';
-                        scrollspy.spyMap[id].style.webkitAnimation = '';
-                        scrollspy.spyMap[id].classList.add('animated');
+                        spyItem.style.opacity = '';
+                        spyItem.style.webkitAnimation = '';
+                        spyItem.classList.add('animated');
                     }
                 } else {
-                    if (scrollspy.spyMap[id].classList.contains('scroll-animate') && scrollspy.spyMap[id].classList.contains('animated')) {
-                        scrollspy.spyMap[id].classList.remove('animated');
+                    if (spyItem.hasAttribute('data-affix') && spyItem.classList.contains('affixed') && (window.scrollY <= (spyItem.dataset.original - offset)))
+                        spyItem.classList.remove('affixed');
+
+                    if (spyItem.classList.contains('scroll-animate') && spyItem.classList.contains('animated')) {
+                        spyItem.classList.remove('animated');
                         //webkit restart hack
-                        scrollspy.spyMap[id].style.webkitAnimation = 'none';
-                        //console.log('removing');
+                        spyItem.style.webkitAnimation = 'none';
                     }
                 }
             }
