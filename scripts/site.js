@@ -369,11 +369,6 @@
         },
         //responsible for any additional rendering in the view
         onRenderView: function () {
-            //bad, failed hack at getting new imgur embeds to work
-            var newScript = document.createElement('script');
-            newScript.src = "//s.imgur.com/min/embed.js";
-            document.body.appendChild(newScript);
-
             playIFrame.init();
             spa.transformLinks();
             svgInliner.run(null, scrollspy.init);
