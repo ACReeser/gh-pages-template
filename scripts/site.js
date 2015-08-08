@@ -32,6 +32,15 @@
 
         return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
     }
+    function closest(child, className) {
+        if (!child || !child.parentNode) {
+            return null;
+        } else if (child.parentNode.classList.contains(className)){
+            return child.parentNode
+        } else {
+            return closest(child.parentNode, className);
+        }
+    }
 	
     //todo: properly export these with utility function
     var logoBG = {
@@ -371,7 +380,11 @@
         onRenderView: function () {
             playIFrame.init();
             spa.transformLinks();
-            svgInliner.run(null, scrollspy.init);
+            svgInliner.run(null, function () {
+                scrollspy.init
+                greyscaleToggle.run();
+                spa.transformLinks();
+            });
             scrollspy.init();
             preventKey.run();
         },
@@ -403,9 +416,11 @@
             header.classList.add('active');
             logoBG.run(viewName);
         },
-        onNavigate: function(){
+        onNavigate: function(event){
             var newView = this.dataset.spaHref;
             spa.navigate(newView, true);
+            event.preventDefault();
+            return false;
         },
         navigate: function (toView, forwards, noTransition) {
             var url, title, pageName;
@@ -431,6 +446,8 @@
         viewNameFromHref: function (href) {
             if (href == "") //this might should also catch undefined, /, and http:\/\/.*\/?
                 return "home";
+            if (typeof (href) == 'object')
+                href = href.baseVal;
             return (href || "").replace(/.*\//g, '').replace('.html', '');
         },
         transformLinks: function(){
@@ -548,6 +565,38 @@
     preventKey.init();
     window.preventKey = preventKey;
 
+    var greyscaleToggle = {
+        _over_listener: function () {
+            var greyscale = closest(this, 'greyscale-toggle');
+            if (greyscale) {
+                var greyscales = greyscale.querySelectorAll('.greyscale-trigger');
+                for (var i = 0; i < greyscales.length; i++) {
+                    if (this != greyscales[i]) {
+                        greyscales[i].classList.add('greyscale');
+                    }
+                }
+            }
+        },
+        _out_listener: function () {
+            var greyscale = closest(this, 'greyscale-toggle');
+            if (greyscale) {
+                var greyscales = greyscale.querySelectorAll('.greyscale-trigger');
+                for (var i = 0; i < greyscales.length; i++) {
+                    if (this != greyscales[i]) {
+                        greyscales[i].classList.remove('greyscale');
+                    }
+                }
+            }
+        },
+        run: function () {
+            var greyscales = document.querySelectorAll(".greyscale-toggle .greyscale-trigger");
+            for (var i = 0; i < greyscales.length; i++) {
+                greyscales[i].addEventListener("mouseenter", greyscaleToggle._over_listener);
+                greyscales[i].addEventListener("mouseleave", greyscaleToggle._out_listener);
+            }
+        }
+    }
+    window.greyscaleToggle = greyscaleToggle;
 
     //after our DOM is loaded...
 	document.addEventListener('DOMContentLoaded', function () {

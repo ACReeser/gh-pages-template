@@ -370,3 +370,10 @@ header.animated-gradient {
   position: absolute;
   top: 0;
 }
+.greyscale-trigger {
+    cursor: pointer;
+    pointer-events: all;
+}
+.greyscale{
+    filter: url("#css_grayscale");
+}
