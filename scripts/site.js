@@ -381,7 +381,7 @@
             playIFrame.init();
             spa.transformLinks();
             svgInliner.run(null, function () {
-                scrollspy.init
+                scrollspy.init();
                 greyscaleToggle.run();
                 spa.transformLinks();
             });
