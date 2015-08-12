@@ -220,16 +220,16 @@ header.animated-gradient {
     background-color: #F15B2A;
     color: white;
     position: relative;
-    padding: 10px 20px;
+    padding: 10px 20px 10px 100px;
     font-weight: 500;
-    margin: 40px 0 40px 80px;
+    margin: 40px 0 40px 0;
 }
 .hex-header:before{
     width: 92px;
     height: 92px;
     position: absolute;
-    top: -22px;
-    left: -85px;
+    top: -23px;
+    left: -6px;
 }
 .hex-header.ecopico:before{
     content: url("../images/ecopico-logo.svg");
@@ -250,6 +250,13 @@ header.animated-gradient {
     position: absolute;
     top: 0;
     left: 100%;
+}
+.square-link{
+    color:white;
+    background-color:#83AA30;
+    margin:0 10px 0 0;
+    padding:10px;
+    text-decoration:none;
 }
 a.no-line{
     text-decoration:none;
