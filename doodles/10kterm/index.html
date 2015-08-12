@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>10kterm</title>
+    <style>
+        html, body{
+            height:100%;
+            width:100%;
+            background-color:black;
+            margin:0;
+            padding:0;
+            overflow-y:hidden;
+            font-family:monospace;
+        }
+        .term-screen {
+            height: 0;
+            width: 100%;
+            margin-top:25%;
+            background-color: white;
+            -moz-transition: height linear .3s, background-color ease-in .4s, margin-top linear .3s;
+            -o-transition: height linear .3s, background-color ease-in .4s, margin-top linear .3s;
+            -webkit-transition: height linear .3s, background-color ease-in .4s, margin-top linear .3s;
+            transition: height linear .3s, background-color ease-in .4s, margin-top linear .3s;
+        }
+        .term-screen.on{
+            background-color:black;
+            height:100%;
+            margin-top:0;
+        }
+        .fixed{
+            position:fixed;
+        }
+        .bottom{
+            bottom:0;
+        }
+        .top-left{
+            left:10%;
+            top:10%;
+        }
+        #bottom-term{
+            color:white;
+        }
+        #xt1 {
+            height: 0;
+            width: 0;
+            -moz-transition: height ease-in-out .5s, width ease-in-out .5s;
+            -o-transition: height ease-in-out .5s, width ease-in-out .5s;
+            -webkit-transition: height ease-in-out .5s, width ease-in-out .5s;
+            transition: height ease-in-out .5s, width ease-in-out .5s;
+        }
+        #xt1.on{
+            width: 600px;
+            height:400px;
+        }
+        .x-term-window{
+            color: lightgreen;
+            border: 2px solid lightgreen;
+        }
+        .title-bar{
+            text-align:center;
+            color:black;
+        }
+        .x-term-window .title-bar{
+            background-color:lightgreen;
+        }
+        .x-term-body{
+            padding:11px;
+        }
+        .caret:after{
+            content:"|";
+            background-color:lightgreen;
+            width:6px;
+            display:inline-block;
+            -webkit-animation: blink 1s steps(5, start) infinite;
+            -moz-animation: blink 1s steps(5, start) infinite;
+            -o-animation: blink 1s steps(5, start) infinite;
+            animation: blink 1s steps(5, start) infinite;
+            margin-left:4px;
+        }
+        .blink {
+            -webkit-animation: blink 1s steps(5, start) infinite;
+            -moz-animation: blink 1s steps(5, start) infinite;
+            -o-animation: blink 1s steps(5, start) infinite;
+            animation: blink 1s steps(5, start) infinite;
+        }
+
+        @-moz-keyframes blink {
+          to {
+            visibility: hidden;
+          }
+        }
+        @-webkit-keyframes blink {
+          to {
+            visibility: hidden;
+          }
+        }
+        @keyframes blink {
+          to {
+            visibility: hidden;
+          }
+        }
+    </style>
+</head>
+<body>
+    <div class="term-screen">
+        <div id="xt1" class="fixed top-left x-term-window" style="display:none;">
+            <div class="title-bar">
+                x-term-10k
+            </div>
+            <div class="x-term-body">
+                <div id="x-term-1">
+                </div>
+                    <p>
+                        <span class="caret">></span>
+                    </p>
+            </div>
+        </div>
+        <div id="bottom-term" class="fixed bottom" style="display:none">
+
+        </div>
+    </div>
+    <footer>
+        <div id="x-term-1-script">
+            <p>
+                > -- Welcome to X Terminal 10k --
+            </p>
+            <p>
+                > x-term-10k opt
+            </p>
+            <div>
+                <p>
+                    > ---- listing options
+                </p>
+                <p>
+                    > -- add-widget [widget-layout] [widget-layout]
+                </p>
+                <p>
+                    > -- start-widget [widget-name]
+                </p>
+                <p>
+                    > -- configure-widget [args...]
+                </p>
+                <p>
+                    > -- spawn-sibling
+                </p>
+            </div>
+        </div>
+        <div id="bottom-term-script">
+            <p>
+                Power on complete
+            </p>
+            <p>
+                Initializing bootstrapping module...
+            </p>
+            <p>
+                Bootstrap loaded into memory - check
+            </p>
+            <p>
+                Console output - check
+            </p>
+            <p>
+                Core diagnostics running...
+            </p>
+            <p>
+                Core diagnostic - optimal
+            </p>
+            <p>
+                Memory diagnostics running...
+            </p>
+            <p>
+                Memory diagnostic - clean
+            </p>
+            <span>Initializing X server</span>
+            <span>.</span><span>.</span><span>.</span>
+            <p>
+                X server running...
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        function delayWrite(termSelector, delay, prepend) {
+            var result;
+            $(termSelector + "-script").children().each(function (index, child) {
+                result = delay * index;
+                setTimeout(function () {
+                    if (prepend)
+                        $(termSelector).prepend(child);
+                    else
+                        $(termSelector).append(child);
+                }, result);
+            });
+            return result;
+        };
+        function initXServer(){
+            $("#xt1").show().addClass('on');
+            setTimeout(function () { delayWrite("#x-term-1", 100); }, 750);
+        }
+        $(document).ready(function () {
+            $(".term-screen").addClass('on');
+            setTimeout(function () {
+                $("#bottom-term").show();
+
+                setTimeout(initXServer,
+                    delayWrite("#bottom-term", 100)
+                );
+            },400);
+        });
+    </script>
+</body>
+</html>
