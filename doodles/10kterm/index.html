@@ -12,6 +12,15 @@
             overflow-y:hidden;
             font-family:monospace;
         }
+        p{
+            margin:3px 0;
+        }
+        h3{
+            text-align:center;
+        }
+        .text-center{
+            text-align:center;
+        }
         .term-screen {
             height: 0;
             width: 100%;
@@ -37,18 +46,37 @@
             left:10%;
             top:10%;
         }
+        .bottom-right{
+            bottom: 10%;
+            right: 10%;
+        }
+        .top-right{
+            top: 10%;
+            right: 10%;
+        }
         #bottom-term{
             color:white;
         }
         #xt1 {
             height: 0;
             width: 0;
+        }
+        .expand{
             -moz-transition: height ease-in-out .5s, width ease-in-out .5s;
             -o-transition: height ease-in-out .5s, width ease-in-out .5s;
             -webkit-transition: height ease-in-out .5s, width ease-in-out .5s;
             transition: height ease-in-out .5s, width ease-in-out .5s;
         }
         #xt1.on{
+            width: 600px;
+            height:400px;
+        }
+        #scrollSourceBody{
+            max-height: 250px;
+            min-height: 250px;
+            overflow-y: hidden;
+        }
+        #cracking{
             width: 600px;
             height:400px;
         }
@@ -66,6 +94,12 @@
         .x-term-body{
             padding:11px;
         }
+
+        .box{
+            border: 1px solid lightgreen;
+            padding:4px;
+        }
+
         .caret:after{
             content:"|";
             background-color:lightgreen;
@@ -83,7 +117,12 @@
             -o-animation: blink 1s steps(5, start) infinite;
             animation: blink 1s steps(5, start) infinite;
         }
-
+        .hiddenToVisible {
+            -webkit-animation: hiddenToVisible 1s steps(5, start) infinite;
+            -moz-animation: hiddenToVisible 1s steps(5, start) infinite;
+            -o-animation: hiddenToVisible 1s steps(5, start) infinite;
+            animation: hiddenToVisible 1s steps(5, start) infinite;
+        }
         @-moz-keyframes blink {
           to {
             visibility: hidden;
@@ -99,20 +138,139 @@
             visibility: hidden;
           }
         }
+
+        @keyframes hiddenToVisible {
+          from{
+              visibility:hidden;
+          }
+          to {
+            visibility:visible;
+          }
+        }
+
+        .margin-loop {
+            -moz-animation: margin-loop 10s linear infinite;
+            -o-animation: margin-loop 10s linear infinite;
+            -webkit-animation: margin-loop 10s linear infinite;
+            animation: margin-loop 10s linear infinite;
+        }
+        @keyframes margin-loop {
+          from {
+              margin-top: 250px;
+          }
+          to {
+              margin-top: -1965px;
+          }
+        }
+
+    .delay-100{ -moz-animation-delay:100ms!important; -o-animation-delay:100ms!important; -webkit-animation-delay:100ms!important; animation-delay:100ms!important;}
+    .delay-200{ -moz-animation-delay:200ms!important; -o-animation-delay:200ms!important; -webkit-animation-delay:200ms!important; animation-delay:200ms!important;}
+    .delay-250{ -moz-animation-delay:250ms!important; -o-animation-delay:250ms!important; -webkit-animation-delay:250ms!important; animation-delay:250ms!important;}
+    .delay-300{ -moz-animation-delay:300ms!important; -o-animation-delay:300ms!important; -webkit-animation-delay:300ms!important; animation-delay:300ms!important;}
+    .delay-400{ -moz-animation-delay:400ms!important; -o-animation-delay:400ms!important; -webkit-animation-delay:400ms!important; animation-delay:400ms!important;}
+    .delay-500{ -moz-animation-delay:500ms!important; -o-animation-delay:500ms!important; -webkit-animation-delay:500ms!important; animation-delay:500ms!important;}
+    .delay-600{ -moz-animation-delay:600ms!important; -o-animation-delay:600ms!important; -webkit-animation-delay:600ms!important; animation-delay:600ms!important;}
+    .delay-700{ -moz-animation-delay:700ms!important; -o-animation-delay:700ms!important; -webkit-animation-delay:700ms!important; animation-delay:700ms!important;}
+    .delay-800{ -moz-animation-delay:800ms!important; -o-animation-delay:800ms!important; -webkit-animation-delay:800ms!important; animation-delay:800ms!important;}
+    .delay-900{ -moz-animation-delay:900ms!important; -o-animation-delay:900ms!important; -webkit-animation-delay:900ms!important; animation-delay:900ms!important;}
+    .delay-750{ -moz-animation-delay:750ms!important; -o-animation-delay:750ms!important; -webkit-animation-delay:750ms!important; animation-delay:750ms!important;}
+    .delay-1000{ -moz-animation-delay:1000ms!important; -o-animation-delay:1000ms!important; -webkit-animation-delay:1000ms!important; animation-delay:1000ms!important;}
+    .delay-1250{ -moz-animation-delay:1250ms!important; -o-animation-delay:1250ms!important; -webkit-animation-delay:1250ms!important; animation-delay:1250ms!important;}
+    .delay-1500{ -moz-animation-delay:1500ms!important; -o-animation-delay:1500ms!important; -webkit-animation-delay:1500ms!important; animation-delay:1500ms!important;}
+    .delay-1750{ -moz-animation-delay:1750ms!important; -o-animation-delay:1750ms!important; -webkit-animation-delay:1750ms!important; animation-delay:1750ms!important;}
+    .delay-2000{ -moz-animation-delay:2000ms!important; -o-animation-delay:2000ms!important; -webkit-animation-delay:2000ms!important; animation-delay:2000ms!important;}
     </style>
 </head>
 <body>
     <div class="term-screen">
-        <div id="xt1" class="fixed top-left x-term-window" style="display:none;">
+        <div id="xt1" class="fixed top-left x-term-window expand" style="display:none;">
             <div class="title-bar">
                 x-term-10k
             </div>
             <div class="x-term-body">
                 <div id="x-term-1">
                 </div>
-                    <p>
-                        <span class="caret">></span>
-                    </p>
+                <p>
+                    <span class="caret">></span>
+                </p>
+            </div>
+        </div>
+        <div id="cracking" class="fixed x-term-window top-right expand">
+            <div class="title-bar">
+                crackerHacker v2.54
+            </div>
+            <div class="x-term-body">
+                <div class="text-center">
+                    <pre style="font: 10px/7px monospace">                          ;##'                             
+' ';`.;+@@@@@.,#;;, ;   :  @@`..      ; ,;;#,.@@@@@+;,`;' '
+ @'`'@@@@@@@@@;   ,  :  #,`,         ;  ,   ;@@@@@@@@@'`'@ 
+  +@@@@@@+++@@@ '@@#    ; #    ++      +@@' @@@+++@@@@@@+  
+ `@@@@@@@`@@@@@@'##@           @@.     @##'@@@@@@`@@@@@@@  
+ ;#.   ,'@+#@@@@,++@ `    ,.   @#:   ` @++.@@@@#+@',   .#; 
+     `;@@@';@+:@ ,@@      .  ,.;@;     @@,`@:+@';@@@;`     
+   +;@@@@@#@#'#@@:,@      '##';@ @     @,:@@#'#@#@@@@@;+   
+    # ..  #@'`:@@.##, '  #@@:@@@@;  ' .##.@@:`'@#  `. #    
+      #@@@@@@:#;;,@,@ `+.@.#+.@:,+@@` @,@,;;#,@@@@@@@      
+      @:.',`#@@:'`@@@@ #@@@@@@@@@@@# @@@#`';@@#`,'.:@      
+         ;#@@@@@ @@@@#@#+'''''''''##@#@@@@`@@@@@#'         
+          @;:#@@@@,;@++#+'''''''''##++@;,@@@@#:;@          
+             @,`@@@;`'.#+'''''''''##.'`;@@@`,@             
+               ',:@@@`.#+'''''''''##.`@@@:,;               
+               ,':,;@#@##:'`#.;;,+#@@@@',,',               
+                  . .@`##:'`#.;;,+#@`@. ,                  
+                  `,#,###:'`#.;;,+#@#,#,.                  
+                      '##:'`#.;;,+#@'`                     
+                       :#:'`#.;;,+#`                       
+                       `;:'`#.;;,+.                        
+                       :#`  :.,  .@,                       
+                       @'@'@#.+#:@+@                       
+                      .# @#@' ,@#@ #,                      
+          .`;:;';#:`, '@;,@:, +:@`;@'         ',           
+      ++;;+''#'.;:+ :,+'##@:   ;@.'@+    `'  ; +`;         
+      ;#+#+;,'`;+':+;,#   #,   `#;;:+#:.:++ +`#'; '        
+       ''+,': #'+#+#+.      .###++;, #+:,,#'; .,:, '       
+        ,+`,.+';:+::;` ,++   ';.:+,#:  `;#'':,';;:'        
+             `'#'                           .' ''          
+</pre>
+                    <h3>
+                        DOD REMOTE LOGIN
+                    </h3>
+                    <div id="crackerBody">
+                        <strong>USERNAME</strong>
+                        <strong class="box" id="dodUser">
+                        </strong>
+                        <strong>PASSWORD</strong>
+                        <strong class="box" id="dodPass">
+                            <span class="blink"></span>
+                            <span class="blink delay-100">*</span>
+                            <span class="blink delay-200">*</span>
+                            <span class="blink delay-300">*</span>
+                            <span class="blink delay-400">*</span>
+                            <span class="blink delay-500">*</span>
+                            <span class="blink delay-600">*</span>
+                            <span class="blink delay-700">*</span>
+                            <span class="blink delay-800">*</span>
+                            <span class="blink delay-900">*</span>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="scrollSource" class="fixed x-term-window bottom-right expand" style="display:none">
+            <div class="title-bar">
+                <p>
+                    /* Random Source Scrolling v.0.3 */
+                </p>
+            </div>
+            <div class="x-term-body">
+                <div id="scrollSourceBody">
+                    <pre class="margin-loop"></pre>
+                </div>
+            </div>
+            <div class="title-bar">
+                <p>
+                    /** currently viewing <span>datagram.c</span>  */
+                </p>
             </div>
         </div>
         <div id="bottom-term" class="fixed bottom" style="display:none">
@@ -132,7 +290,7 @@
                     > ---- listing options
                 </p>
                 <p>
-                    > -- add-widget [widget-layout] [widget-layout]
+                    > -- add-widget [widget-name] [widget-layout]
                 </p>
                 <p>
                     > -- start-widget [widget-name]
@@ -142,6 +300,12 @@
                 </p>
                 <p>
                     > -- spawn-sibling
+                </p>
+                <p>
+                    add-widget scrolling-source bottom-right
+                </p>
+                <p>
+                    start-widget scrolling-source
                 </p>
             </div>
         </div>
@@ -193,9 +357,17 @@
             });
             return result;
         };
-        function initXServer(){
+        function initScrollSource() {
+            $("#scrollSource").show();
+            $.get("https://cdn.rawgit.com/torvalds/linux/master/net/ipv4/datagram.c").then(function (data) {
+                $("#scrollSourceBody pre")[0].innerHTML = data;
+            });
+        }
+        function initXServer() {
             $("#xt1").show().addClass('on');
-            setTimeout(function () { delayWrite("#x-term-1", 100); }, 750);
+            setTimeout(function () {
+                setTimeout(initScrollSource, delayWrite("#x-term-1"), 100);
+            }, 750);
         }
         $(document).ready(function () {
             $(".term-screen").addClass('on');
@@ -205,7 +377,7 @@
                 setTimeout(initXServer,
                     delayWrite("#bottom-term", 100)
                 );
-            },400);
+            }, 400);
         });
     </script>
 </body>
