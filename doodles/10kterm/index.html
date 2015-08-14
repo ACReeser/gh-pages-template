@@ -76,9 +76,13 @@
             min-height: 250px;
             overflow-y: hidden;
         }
-        #cracking{
+		#cracking{
+            overflow:hidden;
+			height: 0; width: 0;
+		}
+        #cracking.on{
             width: 600px;
-            height:400px;
+			height: 345px;
         }
         .x-term-window{
             color: lightgreen;
@@ -98,6 +102,8 @@
         .box{
             border: 1px solid lightgreen;
             padding:4px;
+			min-width: 130px;
+			display: inline-block;
         }
 
         .caret:after{
@@ -117,13 +123,6 @@
             -o-animation: blink 1s steps(5, start) infinite;
             animation: blink 1s steps(5, start) infinite;
         }
-		/*todo: fix by  doing "progress bar" black foreground rect that steps in size from full width to small width*/
-        .hiddenToVisible {
-            -webkit-animation: hiddenToVisible 1s steps(5, start) infinite;
-            -moz-animation: hiddenToVisible 1s steps(5, start) infinite;
-            -o-animation: hiddenToVisible 1s steps(5, start) infinite;
-            animation: hiddenToVisible 1s steps(5, start) infinite;
-        }
         @-moz-keyframes blink {
           to {
             visibility: hidden;
@@ -139,21 +138,56 @@
             visibility: hidden;
           }
         }
-
-        @keyframes hiddenToVisible {
-          from{
-              visibility:hidden;
-          }
+		.progress-bar{
+			position:relative;
+		}
+		.progress-bar:after{
+			content: " ";
+			animation: shrinkWidth 1s steps(10, end) infinite;
+			width: 120%;
+			margin-left: 0;
+			background-color: black;
+			position: absolute;
+			left: 0px;
+			height: 100%;
+			top: 0;
+		}
+		
+        @-moz-keyframes shrinkWidth {
+		  from {
+		    margin-left:0;
+            width: 100%;		  
+		  }
           to {
-            visibility:visible;
+		    margin-left:100%;
+            width: 0;
           }
         }
-
+        @-webkit-keyframes shrinkWidth {
+		  from {
+		    margin-left:0;
+            width: 100%;		  
+		  }
+          to {
+		    margin-left:100%;
+            width: 0;
+          }
+        }
+        @keyframes shrinkWidth {
+		  from {
+		    margin-left:0;
+            width: 100%;		  
+		  }
+          to {
+		    margin-left:100%;
+            width: 0;
+          }
+        }
         .margin-loop {
-            -moz-animation: margin-loop 10s linear infinite;
-            -o-animation: margin-loop 10s linear infinite;
-            -webkit-animation: margin-loop 10s linear infinite;
-            animation: margin-loop 10s linear infinite;
+            -moz-animation: margin-loop 10s steps(60, end) infinite;
+            -o-animation: margin-loop 10s steps(60, end) infinite;
+            -webkit-animation: margin-loop 10s steps(60, end) infinite;
+            animation: margin-loop 10s steps(60, end) infinite;
         }
         @keyframes margin-loop {
           from {
@@ -238,24 +272,27 @@
                     </h3>
                     <div id="crackerBody">
                         <strong>USERNAME</strong>
-                        <strong class="box" id="dodUser">
-                        </strong>
+                        <strong class="box" id="dodUser">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+						&nbsp;
                         <strong>PASSWORD</strong>
-                        <strong class="box" id="dodPass">
-                            <span class="blink"></span>
-                            <span class="blink delay-100">*</span>
-                            <span class="blink delay-200">*</span>
-                            <span class="blink delay-300">*</span>
-                            <span class="blink delay-400">*</span>
-                            <span class="blink delay-500">*</span>
-                            <span class="blink delay-600">*</span>
-                            <span class="blink delay-700">*</span>
-                            <span class="blink delay-800">*</span>
-                            <span class="blink delay-900">*</span>
+                        <strong class="box progress-bar" id="dodPass">
+                            <span class="">*</span>
+                            <span class="">*</span>
+                            <span class="">*</span>
+                            <span class="">*</span>
+                            <span class="">*</span>
+                            <span class="">*</span>
+                            <span class="">*</span>
+                            <span class="">*</span>
+                            <span class="">*</span>
+                            <span class="">*</span>
                         </strong>
                     </div>
                 </div>
             </div>
+			<div class="title-bar">
+				Testing <span id="dodNumerator">1</span> of 89385734 combinations&nbsp;&nbsp;
+			</div>
         </div>
         <div id="scrollSource" class="fixed x-term-window bottom-right expand" style="display:none">
             <div class="title-bar">
@@ -358,6 +395,29 @@
             });
             return result;
         };
+		var dodBox = $("#dodUser"), dodNumber = $("#dodNumerator");
+		function randAlpha(){
+			return Math.random().toString(36).substr(2,1);
+		}
+		function randNumeric(){
+			return Math.floor(Math.random() * 9);
+		}
+		var crackerCount = 1;
+		function crack(){
+			var newUser = "";
+			for (var i = 0; i < 8; i++){
+				newUser += randAlpha();
+			}
+			newUser += randNumeric() +""+ randNumeric();
+			dodBox.text(newUser);
+			dodNumber.text(crackerCount);
+			crackerCount++;
+		}
+		function initCracker(){
+            $("#cracking").addClass('on');
+			crack();
+			setInterval(crack, 1000);
+		}
         function initScrollSource() {
             $("#scrollSource").show();
             $.get("https://cdn.rawgit.com/torvalds/linux/master/net/ipv4/datagram.c").then(function (data) {
@@ -379,6 +439,7 @@
                     delayWrite("#bottom-term", 100)
                 );
             }, 400);
+			initCracker();
         });
     </script>
 </body>
