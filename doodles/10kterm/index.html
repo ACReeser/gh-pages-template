@@ -61,7 +61,7 @@
         #bottom-term{
             color:white;
         }
-        #xt1 {
+        #xt1, #scrollSource, #cracking, #cctv {
             height: 0;
             width: 0;
         }
@@ -75,14 +75,17 @@
             width: 600px;
             height:400px;
         }
+		#scrollSource.on{
+			width:600px;
+			height:400px;
+		}
         #scrollSourceBody{
-            max-height: 250px;
-            min-height: 250px;
-            overflow-y: hidden;
+            max-height: 340px;
+            min-height: 340px;
+            overflow: hidden;
         }
 		#cracking{
             overflow:hidden;
-			height: 0; width: 0;
 		}
         #cracking.on{
             width: 600px;
@@ -121,7 +124,13 @@
             animation: blink 1s steps(5, start) infinite;
             margin-left:4px;
         }
-
+		#cctv{
+			overflow:hidden;
+		}
+		#cctv.on{
+			width:422px;
+			height:335px;
+		}
         .cctv-container{
             /*-webkit-filter: hue-rotate(-120deg);
             filter: hue-rotate(-120deg);*/
@@ -270,7 +279,7 @@
                 </p>
             </div>
         </div>
-        <div id="cracking" class="fixed x-term-window top-right expand">
+        <div id="cracking" class="fixed x-term-window top-right expand" style="display:none">
             <div class="title-bar">
                 crackerHacker v2.54
             </div>
@@ -334,9 +343,9 @@
 				Testing <span id="dodNumerator">1</span> of 89385734 combinations&nbsp;&nbsp;
 			</div>
         </div>
-        <div id="cctv" class="fixed x-term-window top-left expand">
+        <div id="cctv" class="fixed x-term-window top-left expand" style="display:none">
             <div class="title-bar">
-
+				ipcam.tv
             </div>
             <div class="x-term-body">
                 <div class="cctv-container">
@@ -388,14 +397,26 @@
                 </p>
                 <p>
                     > -- spawn-sibling
-                </p>
-                <p>
-                    add-widget scrolling-source bottom-right
-                </p>
-                <p>
-                    start-widget scrolling-source
-                </p>
+                </p>				
             </div>
+			<p>
+				> add-widget scrolling-source bottom-right
+			</p>
+			<p>
+				> start-widget scrolling-source
+			</p>
+			<p>
+				> add-widget war-games-cracker top-right
+			</p>
+			<p>
+				> start-widget war-games-cracker
+			</p>
+			<p>
+				> add-widget camera-feeds top-left
+			</p>
+			<p>
+				> start-widget camera-feeds
+			</p>
         </div>
         <div id="bottom-term-script">
             <p>
@@ -445,6 +466,10 @@
             });
             return result;
         };
+		function initCctv(){
+			$("#cctv").show().addClass("on");
+			cctv();
+		}
         var currentCctv = 1, cctvRuntimes = [1900, 6500, 6000, 8000, 8000, 8000];
         function cctv() {
             setTimeout(function () {
@@ -474,20 +499,22 @@
 			crackerCount++;
 		}
 		function initCracker(){
-            $("#cracking").addClass('on');
+            $("#cracking").show().addClass('on');
 			crack();
 			setInterval(crack, 1000);
+			setTimeout(initCctv, 5000);
 		}
         function initScrollSource() {
-            $("#scrollSource").show();
+            $("#scrollSource").show().addClass('on');
             $.get("https://cdn.rawgit.com/torvalds/linux/master/net/ipv4/datagram.c").then(function (data) {
                 $("#scrollSourceBody pre")[0].innerHTML = data;
+				setTimeout(initCracker, 1000);
             });
         }
         function initXServer() {
             $("#xt1").show().addClass('on');
             setTimeout(function () {
-                setTimeout(initScrollSource, delayWrite("#x-term-1"), 100);
+                setTimeout(initScrollSource, delayWrite("#x-term-1", 100));
             }, 750);
         }
         $(document).ready(function () {
@@ -499,8 +526,6 @@
                     delayWrite("#bottom-term", 100)
                 );
             }, 400);
-            initCracker();
-            cctv();
         });
     </script>
 </body>
