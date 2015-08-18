@@ -18,7 +18,7 @@
         h3{
             text-align:center;
         }
-        img{
+        img:not(.color){
             -webkit-filter: grayscale(1);
             filter: grayscale(1);
         }
@@ -66,6 +66,25 @@
             left:20%;
             bottom: 5%;
         }
+        .top{
+            top:0;
+        }
+        #topBar {
+            width: 100%;
+            height: 16px;
+            background-color: lightgreen;
+            color: black;
+            opacity:0;
+            -moz-transition: opacity linear .5s;
+            -o-transition: opacity linear .5s;
+            -webkit-transition: opacity linear .5s;
+            transition: opacity linear .5s;
+        }
+        #topBar.on{
+            opacity:1;
+        }
+        .pull-left{float:left;}
+        .pull-right{float:right;}
         #bottom-term{
             color:white;
         }
@@ -88,8 +107,8 @@
 			height:400px;
 		}
         #scrollSourceBody{
-            max-height: 340px;
-            min-height: 340px;
+            max-height: 348px;
+            min-height: 348px;
             overflow: hidden;
         }
 		#cracking{
@@ -300,22 +319,22 @@
           }
         }
 
-    .delay-100{ -moz-animation-delay:100ms!important; -o-animation-delay:100ms!important; -webkit-animation-delay:100ms!important; animation-delay:100ms!important;}
-    .delay-200{ -moz-animation-delay:200ms!important; -o-animation-delay:200ms!important; -webkit-animation-delay:200ms!important; animation-delay:200ms!important;}
-    .delay-250{ -moz-animation-delay:250ms!important; -o-animation-delay:250ms!important; -webkit-animation-delay:250ms!important; animation-delay:250ms!important;}
-    .delay-300{ -moz-animation-delay:300ms!important; -o-animation-delay:300ms!important; -webkit-animation-delay:300ms!important; animation-delay:300ms!important;}
-    .delay-400{ -moz-animation-delay:400ms!important; -o-animation-delay:400ms!important; -webkit-animation-delay:400ms!important; animation-delay:400ms!important;}
-    .delay-500{ -moz-animation-delay:500ms!important; -o-animation-delay:500ms!important; -webkit-animation-delay:500ms!important; animation-delay:500ms!important;}
-    .delay-600{ -moz-animation-delay:600ms!important; -o-animation-delay:600ms!important; -webkit-animation-delay:600ms!important; animation-delay:600ms!important;}
-    .delay-700{ -moz-animation-delay:700ms!important; -o-animation-delay:700ms!important; -webkit-animation-delay:700ms!important; animation-delay:700ms!important;}
-    .delay-800{ -moz-animation-delay:800ms!important; -o-animation-delay:800ms!important; -webkit-animation-delay:800ms!important; animation-delay:800ms!important;}
-    .delay-900{ -moz-animation-delay:900ms!important; -o-animation-delay:900ms!important; -webkit-animation-delay:900ms!important; animation-delay:900ms!important;}
-    .delay-750{ -moz-animation-delay:750ms!important; -o-animation-delay:750ms!important; -webkit-animation-delay:750ms!important; animation-delay:750ms!important;}
-    .delay-1000{ -moz-animation-delay:1000ms!important; -o-animation-delay:1000ms!important; -webkit-animation-delay:1000ms!important; animation-delay:1000ms!important;}
-    .delay-1250{ -moz-animation-delay:1250ms!important; -o-animation-delay:1250ms!important; -webkit-animation-delay:1250ms!important; animation-delay:1250ms!important;}
-    .delay-1500{ -moz-animation-delay:1500ms!important; -o-animation-delay:1500ms!important; -webkit-animation-delay:1500ms!important; animation-delay:1500ms!important;}
-    .delay-1750{ -moz-animation-delay:1750ms!important; -o-animation-delay:1750ms!important; -webkit-animation-delay:1750ms!important; animation-delay:1750ms!important;}
-    .delay-2000{ -moz-animation-delay:2000ms!important; -o-animation-delay:2000ms!important; -webkit-animation-delay:2000ms!important; animation-delay:2000ms!important;}
+        .delay-100{ -moz-animation-delay:100ms!important; -o-animation-delay:100ms!important; -webkit-animation-delay:100ms!important; animation-delay:100ms!important;}
+        .delay-200{ -moz-animation-delay:200ms!important; -o-animation-delay:200ms!important; -webkit-animation-delay:200ms!important; animation-delay:200ms!important;}
+        .delay-250{ -moz-animation-delay:250ms!important; -o-animation-delay:250ms!important; -webkit-animation-delay:250ms!important; animation-delay:250ms!important;}
+        .delay-300{ -moz-animation-delay:300ms!important; -o-animation-delay:300ms!important; -webkit-animation-delay:300ms!important; animation-delay:300ms!important;}
+        .delay-400{ -moz-animation-delay:400ms!important; -o-animation-delay:400ms!important; -webkit-animation-delay:400ms!important; animation-delay:400ms!important;}
+        .delay-500{ -moz-animation-delay:500ms!important; -o-animation-delay:500ms!important; -webkit-animation-delay:500ms!important; animation-delay:500ms!important;}
+        .delay-600{ -moz-animation-delay:600ms!important; -o-animation-delay:600ms!important; -webkit-animation-delay:600ms!important; animation-delay:600ms!important;}
+        .delay-700{ -moz-animation-delay:700ms!important; -o-animation-delay:700ms!important; -webkit-animation-delay:700ms!important; animation-delay:700ms!important;}
+        .delay-800{ -moz-animation-delay:800ms!important; -o-animation-delay:800ms!important; -webkit-animation-delay:800ms!important; animation-delay:800ms!important;}
+        .delay-900{ -moz-animation-delay:900ms!important; -o-animation-delay:900ms!important; -webkit-animation-delay:900ms!important; animation-delay:900ms!important;}
+        .delay-750{ -moz-animation-delay:750ms!important; -o-animation-delay:750ms!important; -webkit-animation-delay:750ms!important; animation-delay:750ms!important;}
+        .delay-1000{ -moz-animation-delay:1000ms!important; -o-animation-delay:1000ms!important; -webkit-animation-delay:1000ms!important; animation-delay:1000ms!important;}
+        .delay-1250{ -moz-animation-delay:1250ms!important; -o-animation-delay:1250ms!important; -webkit-animation-delay:1250ms!important; animation-delay:1250ms!important;}
+        .delay-1500{ -moz-animation-delay:1500ms!important; -o-animation-delay:1500ms!important; -webkit-animation-delay:1500ms!important; animation-delay:1500ms!important;}
+        .delay-1750{ -moz-animation-delay:1750ms!important; -o-animation-delay:1750ms!important; -webkit-animation-delay:1750ms!important; animation-delay:1750ms!important;}
+        .delay-2000{ -moz-animation-delay:2000ms!important; -o-animation-delay:2000ms!important; -webkit-animation-delay:2000ms!important; animation-delay:2000ms!important;}
 
         .green-stripes, .cctv-container:after {
             -moz-animation: scanLines linear 200ms infinite;
@@ -333,10 +352,30 @@
                 background-image:repeating-linear-gradient(0,rgba(0,0,0,0),rgba(0,200,0,.2) 1%,rgba(0,0,0,0) 2%);
             }
         }
+
+        .tiny{
+            font-size:.5em;
+        }
+        .small{
+            font-size:.75em;
+        }
     </style>
 </head>
 <body>
     <div class="term-screen">
+        <div id="topBar" class="fixed top" style="display:block">
+            <div class="title-bar text-center">
+                <span class="pull-left" id="time" style="margin-left:20px;">
+                    11:11
+                </span>
+                <span>
+                    h4x0r r3m0t3 t3rm1na1
+                </span>
+                <span class="pull-right" id="wifi" style="margin-right:20px;">
+                    100%
+                </span>
+            </div>
+        </div>
         <div id="xt1" class="fixed middle-bottom x-term-window expand" style="display:none;">
             <div class="title-bar">
                 x-term-10k
@@ -347,6 +386,14 @@
                 <p>
                     <span class="caret">></span>
                 </p>
+            </div>
+        </div>
+        <div class="fixed top-left x-term-window expand" id="satMap" style="display:none">
+            <div class="title-bar">
+                satMap
+            </div>
+            <div class="x-term-body">
+                <img src="world_green.png" alt="" class="color" />
             </div>
         </div>
         <div id="dbFaceMatch" class="fixed x-term-window top-middle expand" style="display:none">
@@ -470,9 +517,7 @@
         </div>
         <div id="scrollSource" class="fixed x-term-window bottom-right expand" style="display:none">
             <div class="title-bar">
-                <p>
-                    /* Random Source Scrolling v.0.3 */
-                </p>
+                /* Random Source Scrolling v.0.3 */
             </div>
             <div class="x-term-body">
                 <div id="scrollSourceBody">
@@ -480,9 +525,7 @@
                 </div>
             </div>
             <div class="title-bar">
-                <p>
-                    /** currently viewing <span>datagram.c</span>  */
-                </p>
+                /** currently viewing <span>datagram.c</span>  */
             </div>
         </div>
         <div id="bottom-term" class="fixed bottom" style="display:none">
@@ -643,6 +686,9 @@
 			crack();
 			setInterval(crack, 1000);
 			setTimeout(initCctv, 5000);
+			setTimeout(function () {
+			    activateWindow($("#satMap"));
+			}, 5000);
 		}
         function initScrollSource() {
             activateWindow($("#scrollSource"));
@@ -653,6 +699,7 @@
         }
         function initXServer() {
             activateWindow($("#xt1"));
+            $("#topBar").show().addClass("on");
             setTimeout(function () {
                 setTimeout(initScrollSource, delayWrite("#x-term-1", 100));
             }, 750);
