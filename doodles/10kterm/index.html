@@ -98,6 +98,7 @@
         .title-bar{
             text-align:center;
             color:black;
+            cursor:pointer;
         }
         .x-term-window .title-bar{
             background-color:lightgreen;
@@ -526,6 +527,22 @@
                     delayWrite("#bottom-term", 100)
                 );
             }, 400);
+
+            /** click n drag **/
+            var pinned = null, offsetX, offsetY;
+            $(".title-bar").on('mousedown', function (event) {
+                pinned = $(this);
+                offsetX = event.offsetX;
+                offsetY = event.offsetY;
+            });
+            $(document).on('mouseup', function () {
+                pinned = null
+            });
+            $(document).on('mousemove', function (event) {
+                if (pinned)
+                    pinned.parent().offset({ left: event.clientX - offsetX, top: event.clientY - offsetY });
+            });
+            /** end click n drag **/
         });
     </script>
 </body>
