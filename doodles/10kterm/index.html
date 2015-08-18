@@ -138,9 +138,14 @@
             animation: blink 1s steps(5, start) infinite;
             margin-left:4px;
         }
-
         #dbFaceMatch{
+            width:0;
+            height:0;
+            overflow:hidden;
+        }
+        #dbFaceMatch.on{
             width:400px;
+            height:251px;
         }
         .db-face-h4, .db-face-h3{
             background-color:lightgreen;
@@ -581,7 +586,6 @@
             activateWindow($("#dbFaceMatch"));
             db();
         }
-        initDB();
         function db() {
             $.ajax({
                 url: 'https://randomuser.me/api/',
@@ -603,7 +607,8 @@
         }
 		function initCctv(){
 		    activateWindow($("#cctv"));
-			cctv();
+		    cctv();
+		    setTimeout(initDB, 2500);
 		}
         var currentCctv = 1, cctvRuntimes = [1900, 6500, 6000, 8000, 8000, 8000];
         function cctv() {
