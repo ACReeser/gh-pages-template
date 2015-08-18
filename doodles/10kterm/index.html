@@ -18,6 +18,10 @@
         h3{
             text-align:center;
         }
+        img{
+            -webkit-filter: grayscale(1);
+            filter: grayscale(1);
+        }
         .text-center{
             text-align:center;
         }
@@ -53,6 +57,10 @@
         .top-right{
             top: 10%;
             right: 10%;
+        }
+        .top-middle{
+            top: 10%;
+            left: 37%;
         }
         .middle-bottom{
             left:20%;
@@ -94,11 +102,16 @@
         .x-term-window{
             color: lightgreen;
             border: 2px solid lightgreen;
+            background-color:black;
         }
-        .title-bar{
-            text-align:center;
-            color:black;
-            cursor:pointer;
+        .title-bar {
+            text-align: center;
+            color: black;
+            cursor: pointer;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
         }
         .x-term-window .title-bar{
             background-color:lightgreen;
@@ -125,6 +138,59 @@
             animation: blink 1s steps(5, start) infinite;
             margin-left:4px;
         }
+
+        #dbFaceMatch{
+            width:400px;
+        }
+        .db-face-h4, .db-face-h3{
+            background-color:lightgreen;
+            color:black;
+            text-align:center;
+        }
+        #dbFaceContainer{
+            position:relative;
+            display:inline-block;
+        }
+        #dbFaceContainer:after{
+            content:".";
+            background-color:rgba(0,200,0,.5);
+            position:absolute;
+            top:0; right:0;
+            width:100%; height:98%;
+        }
+
+        .db-face-h3{
+            font-weight:bold;
+            padding:10px;
+            margin:0;
+        }
+        .db-face-h4 {
+            margin: 4px;
+            -moz-animation: blink 2s steps(2, start) infinite;
+            -o-animation: blink 2s steps(2, start) infinite;
+            -webkit-animation: blink 2s steps(2, start) infinite;
+            animation: blink 2s steps(2, start) infinite;
+        }
+        .db-face-panel{
+            display:inline-block;
+            vertical-align:top;
+        }
+        table{
+            border-collapse: collapse;
+            width: 100%;
+            margin-top:6px;
+        }
+        table, th, td{
+            border:2px solid lightgreen;
+        }
+        th,td{
+            padding:4px;
+        }
+        th{
+            color:black;
+            background-color:lightgreen;
+        }
+
 		#cctv{
 			overflow:hidden;
 		}
@@ -133,8 +199,6 @@
 			height:335px;
 		}
         .cctv-container{
-            /*-webkit-filter: hue-rotate(-120deg);
-            filter: hue-rotate(-120deg);*/
             position:relative;
         }
         .cctv-container:after{
@@ -278,6 +342,51 @@
                 <p>
                     <span class="caret">></span>
                 </p>
+            </div>
+        </div>
+        <div id="dbFaceMatch" class="fixed x-term-window top-middle expand" style="display:none">
+            <div class="title-bar">
+                TRUCRIME(TM) FacialRecog
+            </div>
+            <div class="x-term-body">
+                <h3 class="db-face-h3">FACIAL RECOGNITION DATABASE QUERY</h3>
+                <div class="db-face-panel">
+                    <div id="dbFaceContainer" style="width:150px;">
+                        <img id="dbFace" src="" alt="facial recognition image" style="width:150px;" />
+                    </div>
+                </div>
+                <div class="db-face-panel" style="width:220px;">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th colspan="2">
+                                    <span>SEARCH IN PROGRESS</span>
+                                    <span class="blink ">.</span>
+                                    <span class="blink delay-200">.</span>
+                                    <span class="blink delay-400">.</span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>NAME</th>
+                                <td id="dbName"></td>
+                            </tr>
+                            <tr>
+                                <th>DOB</th>
+                                <td id="dbDOB"></td>
+                            </tr>
+                            <tr>
+                                <th>PH#</th>
+                                <td id="dbPH"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="width:220px;">
+                        <h4 class="db-face-h4">SEARCH IN PROGRESS</h4>
+                        <div id="dbMd5"></div>
+                        <div id="dbSha1"></div>
+                        <div id="dbSha256"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="cracking" class="fixed x-term-window top-right expand" style="display:none">
@@ -454,6 +563,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
+        var windows = [];
         function delayWrite(termSelector, delay, prepend) {
             var result;
             $(termSelector + "-script").children().each(function (index, child) {
@@ -466,9 +576,33 @@
                 }, result);
             });
             return result;
-        };
+        }
+        function initDB() {
+            activateWindow($("#dbFaceMatch"));
+            db();
+        }
+        initDB();
+        function db() {
+            $.ajax({
+                url: 'https://randomuser.me/api/',
+                dataType: 'json',
+                success: function (data) {
+                    if (data) {
+                        data = data.results[0].user;
+                        $("#dbFace").attr("src", data.picture.medium);
+                        $("#dbName").text(data.name.first + " " + data.name.last);
+                        $("#dbDOB").text(new Date(data.dob).toDateString());
+                        $("#dbPH").text(data.phone);
+                        $("#dbMd5").text(data.md5.substr(0, 31));
+                        $("#dbSha1").text(data.sha1.substr(0, 31));
+                        $("#dbSha256").text(data.sha256.substr(0,31));
+                    }
+                    setTimeout(db, 1000);
+                }
+            });
+        }
 		function initCctv(){
-			$("#cctv").show().addClass("on");
+		    activateWindow($("#cctv"));
 			cctv();
 		}
         var currentCctv = 1, cctvRuntimes = [1900, 6500, 6000, 8000, 8000, 8000];
@@ -500,26 +634,38 @@
 			crackerCount++;
 		}
 		function initCracker(){
-            $("#cracking").show().addClass('on');
+		    activateWindow($("#cracking"));
 			crack();
 			setInterval(crack, 1000);
 			setTimeout(initCctv, 5000);
 		}
         function initScrollSource() {
-            $("#scrollSource").show().addClass('on');
+            activateWindow($("#scrollSource"));
             $.get("https://cdn.rawgit.com/torvalds/linux/master/net/ipv4/datagram.c").then(function (data) {
                 $("#scrollSourceBody pre")[0].innerHTML = data;
 				setTimeout(initCracker, 1000);
             });
         }
         function initXServer() {
-            $("#xt1").show().addClass('on');
+            activateWindow($("#xt1"));
             setTimeout(function () {
                 setTimeout(initScrollSource, delayWrite("#x-term-1", 100));
             }, 750);
         }
+        function bringToTop(element) {
+            windows.push(element[0]);
+            windows.splice(windows.indexOf(element[0]), 1);
+            windows.push(element);
+            for(var i = 0; i < windows.length; i++){
+                windows[i].css({ 'z-index': i+1 });
+            }
+        }
+        function activateWindow(element){
+            element.show().addClass("on");
+            bringToTop(element);
+        }
         $(document).ready(function () {
-            $(".term-screen").addClass('on');
+            activateWindow($(".term-screen"));
             setTimeout(function () {
                 $("#bottom-term").show();
 
@@ -531,16 +677,17 @@
             /** click n drag **/
             var pinned = null, offsetX, offsetY;
             $(".title-bar").on('mousedown', function (event) {
-                pinned = $(this);
+                pinned = $(this).parent();
+                bringToTop($(pinned));
                 offsetX = event.offsetX;
                 offsetY = event.offsetY;
             });
             $(document).on('mouseup', function () {
-                pinned = null
+                pinned = null;
             });
             $(document).on('mousemove', function (event) {
                 if (pinned)
-                    pinned.parent().offset({ left: event.clientX - offsetX, top: event.clientY - offsetY });
+                    pinned.offset({ left: event.clientX - offsetX, top: event.clientY - offsetY });
             });
             /** end click n drag **/
         });
