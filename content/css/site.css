@@ -222,7 +222,11 @@ header.animated-gradient {
     position: relative;
     padding: 10px 20px 10px 100px;
     font-weight: 500;
-    margin: 40px 0 40px 0;
+    margin: 100px 0 10px 0;
+}
+.hex-header.no-logo{
+    padding-left: 12px;
+    padding-right: 128px;
 }
 .hex-header:before{
     width: 92px;
@@ -230,6 +234,10 @@ header.animated-gradient {
     position: absolute;
     top: -23px;
     left: -6px;
+}
+/*the extra top/bottom padding is to compensate for the smaller font-size*/
+h3.hex-header{
+    padding: 13px 20px 13px 100px;
 }
 .hex-header.ecopico:before{
     content: url("../images/ecopico-logo.svg");
@@ -250,6 +258,9 @@ header.animated-gradient {
     position: absolute;
     top: 0;
     left: 100%;
+}
+.mrg-t-10{
+    margin-top: 10px;
 }
 .square-link{
     color:white;
