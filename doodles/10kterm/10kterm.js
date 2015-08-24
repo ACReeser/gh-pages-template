@@ -13,9 +13,13 @@
 		});
 		return result;
 	}
+	function initLink(){
+		activateWindow($("#linkBack"));
+	}
 	function initDB() {
 		activateWindow($("#dbFaceMatch"));
 		db();
+		setTimeout(initLink, 5000);
 	}
 	function db() {
 		$.ajax({
