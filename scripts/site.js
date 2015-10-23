@@ -457,7 +457,7 @@
                 if (links[i].href != 'javascript:void(0);'){
                     links[i].addEventListener("click", spa.onNavigate);
                     //if the spaHref is blank, mine the view from the real href
-                    if (links[i].dataset.spaHref == '')
+                    if (links[i].dataset && links[i].dataset.spaHref == '')
                         links[i].setAttribute('data-spa-href', spa.viewNameFromHref(links[i].href));
                     links[i].href = 'javascript:void(0);';
                 }
