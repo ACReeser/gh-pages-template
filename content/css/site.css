@@ -42,7 +42,8 @@ h1{
 	top:144px;
 	background-color:#F15A29;
 	height: 90%;
-    height: calc(100% - 128px);
+    	height: calc(100% - 128px);
+    	width: 144px;
 	
 	color:white;
 	font-family:'Source Sans Pro' 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
