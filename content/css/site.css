@@ -410,6 +410,29 @@ a.no-line{
 .home-stripe > div{
     display:inline-block;
 }
+.home-stripe > .hex-1{
+    width:460px;
+}
+.home-stripe > .hex-2{
+    width:600px;
+    height:560px;
+    margin-left: -31px;
+}
+.home-stripe > .hex-3{
+    width:800px;
+}
+@media (max-width: 600px){
+    .home-stripe > div{
+        width: 100%;
+        margin: 0;
+        left: 0;
+        top: 80%;
+    }    
+    .home-stripe > .hex{
+        width: 100%;
+        margin-bottom: 20px;
+    }   
+}
 .home-ar-label{
     height:90px;
     width:380px;
