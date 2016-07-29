@@ -27,7 +27,7 @@
 			dataType: 'json',
 			success: function (data) {
 				if (data) {
-					data = data.results[0].user;
+					data = data.results[0];
 					$("#dbFace").attr("src", data.picture.medium);
 					$("#dbName").text(data.name.first + " " + data.name.last);
 					$("#dbDOB").text(new Date(data.dob).toDateString());
