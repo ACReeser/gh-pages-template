@@ -32,9 +32,9 @@
 					$("#dbName").text(data.name.first + " " + data.name.last);
 					$("#dbDOB").text(new Date(data.dob).toDateString());
 					$("#dbPH").text(data.phone);
-					$("#dbMd5").text(data.md5.substr(0, 31));
-					$("#dbSha1").text(data.sha1.substr(0, 31));
-					$("#dbSha256").text(data.sha256.substr(0,31));
+					$("#dbMd5").text(data.login.md5.substr(0, 31));
+					$("#dbSha1").text(data.login.sha1.substr(0, 31));
+					$("#dbSha256").text(data.login.sha256.substr(0,31));
 				}
 				setTimeout(db, 1000);
 			}
