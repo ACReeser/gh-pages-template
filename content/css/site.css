@@ -235,6 +235,7 @@ header.animated-gradient {
     position: absolute;
     top: -23px;
     left: -6px;
+	z-index:9;
 }
 /*the extra top/bottom padding is to compensate for the smaller font-size*/
 h3.hex-header{
@@ -290,7 +291,7 @@ a.no-line{
     display:inline-table;
     margin-right:20px;
     position:absolute;
-    right: calc( 100% - 19px );
+    right: calc( 100% - 20px );
     top:0;
 }
 .stretch-hex:after{
@@ -426,12 +427,16 @@ a.no-line{
         width: 100%;
         margin: 0;
         left: 0;
-        top: 80%;
+        top: 50%;
     }    
     .home-stripe > .hex{
         width: 100%;
         margin-bottom: 20px;
     }   
+	.byte-link, .byte-container{
+		width:100%;
+		display: block;
+	}
 }
 .home-ar-label{
     height:90px;
@@ -474,4 +479,7 @@ a.no-line{
 }
 .greyscale{
     filter: url("#css_grayscale");
+}
+.full-width{
+	width:100%;
 }
