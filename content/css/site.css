@@ -244,6 +244,12 @@ h3.hex-header{
 .hex-header.ecopico:before{
     content: url("../images/ecopico-logo.svg");
 }
+.hex-header.psycho-surgeon-logo:before{
+	content: url("../images/psychosurgeon-logo.svg");
+}
+.hex-header.time-slice-logo:before{
+	content: url("../images/timeslice-logo.svg");
+}
 .hex-header.chartbugz:before{
     content: url("../images/chartbugz-logo.svg");
 }
