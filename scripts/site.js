@@ -407,11 +407,14 @@
             header.offsetWidth = header.offsetWidth;
 
             var nextBackground = anim.viewBackground[viewName];
-            header.setAttribute('style', 'background-image: linear-gradient(0deg, ' + anim.viewBackground._current + ', ' + anim.viewBackground._current + ', ' + nextBackground + ', ' + nextBackground + ');');
-            anim.viewBackground._current = nextBackground;
-            header.classList.add('animated-gradient');
-            //shield color
-            document.getElementById('RightShield').setAttribute('fill', nextBackground);
+            //if there is no unique background specified, don't change to white
+            if (nextBackground) {
+                header.setAttribute('style', 'background-image: linear-gradient(0deg, ' + anim.viewBackground._current + ', ' + anim.viewBackground._current + ', ' + nextBackground + ', ' + nextBackground + ');');
+                anim.viewBackground._current = nextBackground;
+                header.classList.add('animated-gradient');
+                //shield color
+                document.getElementById('RightShield').setAttribute('fill', nextBackground);
+            }
 			
             header.classList.add('active');
             logoBG.run(viewName);
