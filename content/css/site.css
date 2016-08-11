@@ -176,6 +176,13 @@ code.inline{
 	width:200px;
 }
 
+div.img-wrapper{
+	text-align: center;
+}
+.img-wrapper > img{
+	max-width: 100%;
+}
+
 .dark-blue{
 	background-color:#4D6684;
 }
