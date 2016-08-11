@@ -176,6 +176,12 @@ code.inline{
 	width:200px;
 }
 
+.dot-link{
+	color:#F15A29;
+	border-bottom: 1px dotted #F15A29;
+	text-decoration: none;
+}
+
 div.img-wrapper{
 	text-align: center;
 }
