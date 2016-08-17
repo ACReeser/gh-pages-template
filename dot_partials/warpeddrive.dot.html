@@ -20,8 +20,62 @@
 <p>What follows is the chronicle of <i>Warped Drive</i>, the most "complete," and most ambitious game I've worked on yet. I've titled this a "mid-mortem" in the hopes that one day I'll be proud of the last binary release. No, this post is more a cathartic log of how I got here.</p>
 <h3>Best Intentions</h3>
 <p>
-      Unlike a <a href="words.html" class="dot-link">future struggle with logo design</a>, <strong>Harmonic Order</strong> (our studio) got named and a logo very quickly. 
+      The innocuous looking IM above was sent to my siblings, all 4 of them.  I had idly chatted about the idea a week or so prior, and some of us had time to kill, so we thought it would be fun to try. Unlike a <a href="words.html" class="dot-link">future struggle with logo design</a>, <strong>Harmonic Order</strong> (our studio) got named and a logo very quickly. 
 </p>
-<p>This post, meant to be cathartic, ended up invoking much more emotion than I thought. It's been months since I've dropped this project, and re-visiting it is a little unsettling and intensely sad. I think that's because of how close it came to actually being <strong>done</strong>. Not half-finished, but wholly-finished. Maybe someday I'll rectify this sad state of affairs. I'll raise the digital coffin and banish all the negative emotional metadata. </p>
+<figure class="img-wrapper">
+      <img src="http://i.imgur.com/BNZbrqg.png" alt="">
+      <figcaption>We went with the bottom-left one.</figcaption>
+</figure>
+<p>
+      After a short discussion, we converged on one theme that the whole team was interested in: hacking.  We broke for a few days so that each of us had the chance to come up with two or three pitches. We soon had three front-runners: <i>Volt .45</i>, an adventure/hacking game in a cyber-noir setting, <i>Crypt Keeper</i>, an action/RPG set in a cyberdystopia, and <i>Krankshclaf</i> (German, lit. sick-sleep), where a pilot of a starship must fight off a virus in the ship's computer. After a little back and forth about which was our favorite, the infected-starship game (now titled <i>Warped Drive</i>) became the front-runner.  Brains were stormed as we came up with suitable game mechanics and tweaks to plot and setting.
+</p>
+<p>
+      During this discussion, I wrote an "Appendix" to our design doc (a small essay, really) in which I outlined the perils of feature creep. It contained this ominous section:
+</p>
+<blockquote>
+      This early in the design process, we have to be disciplined in what we seek to make. We need to pick things that can challenge us, but not overwhelm us. The more we pack in now, the less ‘room’ we’ll have to add features as the game development goes on. I’m not saying we should discard every original idea that we have as “too much work,” but we should pick our battles.
+</blockquote>
+<p>
+      <!--Remember that. I'm going to ruefully call back to later down the page when things go off the rails.-->I was worried at the time that I was being too harsh with the readers of that mini-essay, that I'd scare my own siblings away from wanting to help.  Now I look back and wish I had taken this cautious approach not just at the beginning of this project, but for the whole laborious process. But we're not to the regret yet, that comes later in the story.
+</p>
+<p>
+      Our game design doc now had some important mechanics, a plot, and a setting. What it did <strong>not</strong> have was a core gameplay loop. We had sketched out a secondary gameplay loop: switching between meatspace and cyberspace to manage your oxygen supply. So I set out to prototype the core game loop. In addition, since I had past experience in Unity, I wanted to dive back in and see how it had improved.  It was great! More performance and more free stuff, like the Image Effects library. I spent a few hours putting together a cyberspace-as-space flight sim. It was a tech demo, nothing fancy. I started thinking about how to represent cyberspace on a starship in the future. 
+</p>
+<h3>PENTEST IN SPAACE</h3>
+<div class="gfycat-small">
+      <div style='position:relative;padding-bottom:75%'><iframe src='https://gfycat.com/ifr/ContentSlimGermanwirehairedpointer' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+</div>
+<p>
+      My tech demo had a first-person starship zooming around a space-station circling the moon of gas giant with binary jet streams at the poles. The intent was to have the space station represent a web server or database, and the gas giant was a representation of the machine that it was deployed on. 
+</p>
+<p>
+      The visual design now had a formula: cosmic shapes and patterns presented with the neon and pixels of cyberspace. The focus of the hacking gameplay was still unclear: is the player a one-man virus-busting starfighter? My limited knowledge of information security knew that using this conceptual base was a bad fit for the world of cyber-security, with its levels of complexity. 
+</p>
+<h3>Let's Get Down To Business</h3>
+<p>
+      And so I started coding. Quite a lot of coding. And prototyping. And modelling. 
+</p>
+<figure class="img-wrapper">
+      <img src="http://i.imgur.com/rAxq30a.png" alt="">
+      <figcaption>Virus Prototypes: bomber, torpedo, tank (left to right)</figcaption>
+</figure>
+<figure class="img-wrapper">
+      <img src="http://i.imgur.com/Eom0rut.png" alt="">
+      <figcaption>UV Mapping Skill++</figcaption>
+</figure>
+<h3>Your Own Cassandra</h3>
+<div class="img-wrapper">
+      
+</div>
+<div class="img-wrapper">
+      
+</div>
+<div class="imgur-wrapper">
+      <blockquote class="imgur-embed-pub" lang="en" data-id="a/TSGH3"><a href="//imgur.com/TSGH3">Warped Drive</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+</div>
+<!--<p>This post, meant to be cathartic, ended up invoking much more emotion than I thought. It's been months since I've dropped this project, and re-visiting it is a little unsettling and intensely sad. I think that's because of how close it came to actually being <strong>done</strong>. Not half-finished, but wholly-finished. Maybe someday I'll rectify this sad state of affairs. I'll raise the digital coffin and banish all the negative emotional metadata. </p>
 <p>Maybe, hopefully.</p>
-<p>-Alex</p>
+<p>-Alex</p>-->
+<div class="gfycat-small">
+      <div style='position:relative;padding-bottom:75%'><iframe src='https://gfycat.com/ifr/DistortedUnevenAmericanquarterhorse' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+</div>

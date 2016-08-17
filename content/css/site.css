@@ -182,11 +182,18 @@ code.inline{
 	text-decoration: none;
 }
 
-div.img-wrapper{
+div.img-wrapper, figure.img-wrapper{
 	text-align: center;
 }
 .img-wrapper > img{
 	max-width: 100%;
+}
+.imgur-wrapper > iframe[class^='imgur-embed']{
+	display: block;
+}
+
+.gfycat-small{
+	max-width: 75%;
 }
 
 .dark-blue{
