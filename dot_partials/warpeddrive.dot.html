@@ -39,7 +39,7 @@
       <!--Remember that. I'm going to ruefully call back to later down the page when things go off the rails.-->I was worried at the time that I was being too harsh with the readers of that mini-essay, that I'd scare my own siblings away from wanting to help.  Now I look back and wish I had taken this cautious approach not just at the beginning of this project, but for the whole laborious process. But we're not to the regret yet, that comes later in the story.
 </p>
 <p>
-      Our game design doc now had some important mechanics, a plot, and a setting. What it did <strong>not</strong> have was a core gameplay loop. We had sketched out a secondary gameplay loop: switching between meatspace and cyberspace to manage your oxygen supply. So I set out to prototype the core game loop. In addition, since I had past experience in Unity, I wanted to dive back in and see how it had improved.  It was great! More performance and more free stuff, like the Image Effects library. I spent a few hours putting together a cyberspace-as-space flight sim. It was a tech demo, nothing fancy. I started thinking about how to represent cyberspace on a starship in the future. 
+      Our game design doc now had some important mechanics, a plot, and a setting. What it did <strong>not</strong> have was a core gameplay loop. We had sketched out a secondary gameplay loop: switching between meatspace and cyberspace to manage your oxygen supply. So I set out to prototype the core game loop. In addition, since I had past experience in Unity, I wanted to dive back in and see how it had improved.  It was great! Unity had much better performance and more free stuff, like the Image Effects library. I spent a few hours putting together a cyberspace-as-space flight sim. It was a tech demo, nothing fancy. I started thinking about how to represent cyberspace on a starship in the future. 
 </p>
 <h3>PENTEST IN SPAACE</h3>
 <div class="gfycat-small">
@@ -50,6 +50,12 @@
 </p>
 <p>
       The visual design now had a formula: cosmic shapes and patterns presented with the neon and pixels of cyberspace. The focus of the hacking gameplay was still unclear: is the player a one-man virus-busting starfighter? My limited knowledge of information security knew that using this conceptual base was a bad fit for the world of cyber-security, with its levels of complexity. 
+</p>
+<p>
+      Our idea of the core gameplay was limited to "clean viruses off of fancy sci-fi computers." We had no real idea of how to frame and present this idea. The tech demo was based on the idea that our sysadmin hero flys a single virtual antivirus cyberspace ship around, blasting individual viruses. After some thinking, this didn't sit right with me. The scope seemed too small. Sysadmins have to purge whole systems of malicious programs while worrying about the larger network. I consciously was rejecting the idea that the gameplay should fall in the cateogry of action/space flight sim. But if not that, what genre should the gameplay fit into? Puzzle? Platformer? 
+</p>
+<p>
+      After a lot of thought, I settled on <i>Strategy.</i> The gameplay metaphor was that a sysadmin would be a general, sending their anti-virus software into battle after battle to win the overall war. The core gameplay would be: remove viruses off of machine, move to next machine, repeat until the whole network is clean. I thought I had some good mechanics too: individual antivirus "scripts" (units) would require CPU cores (resources) to deploy, and your choice of scripts was constrained by RAM (loadout). Unfortunately, I didn't take to heart my own careful warning that feature creep can kill a project. Choosing to write a strategy game, while perhaps the right choice for some reasons, was the wrong choice for ensuring your game is fully completed on a timeline of months. 
 </p>
 <h3>Let's Get Down To Business</h3>
 <p>
