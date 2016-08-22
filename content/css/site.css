@@ -7,8 +7,15 @@ body{
 	margin:0;
     position:relative;
 }
-header{
+
+blockquote{
+	background: rgba(241, 90, 39, 0.47);
+	margin: 0;
+	padding: 1em;
+	color: black;
+	font-style: italic;
 }
+
 h1{
 	text-align:center;
 	text-shadow: 
@@ -190,10 +197,12 @@ div.img-wrapper, figure.img-wrapper{
 }
 .imgur-wrapper > iframe[class^='imgur-embed']{
 	display: block;
+	margin:auto!important;
 }
 
 .gfycat-small{
 	max-width: 75%;
+	margin:auto;
 }
 
 .dark-blue{

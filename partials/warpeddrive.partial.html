@@ -23,7 +23,13 @@
       <figcaption>We went with the bottom-left one.</figcaption>
 </figure>
 <p>
-      After a short discussion, we converged on one theme that the whole team was interested in: hacking.  We broke for a few days so that each of us had the chance to come up with two or three pitches. We soon had three front-runners: <i>Volt .45</i>, an adventure/hacking game in a cyber-noir setting, <i>Crypt Keeper</i>, an action/RPG set in a cyberdystopia, and <i>Krankshclaf</i> (German, lit. sick-sleep), where a pilot of a starship must fight off a virus in the ship's computer. After a little back and forth about which was our favorite, the infected-starship game (now titled <i>Warped Drive</i>) became the front-runner.  Brains were stormed as we came up with suitable game mechanics and tweaks to plot and setting.
+      After a short discussion, we converged on one theme that the whole team was interested in: hacking.  We broke for a few days so that each of us had the chance to come up with two or three pitches. We soon had three front-runners:
+      <ul>
+            <li><i>Volt .45</i>, an adventure/hacking game in a cyber-noir setting</li>
+            <li><i>Crypt Keeper</i>, an action/RPG set in a cyberdystopia</li>
+            <li><i>Krankshclaf</i> (German, lit. sick-sleep), where a pilot of a starship must fight off a virus in the ship's computer</li>
+      </ul> 
+      After a little back and forth about which was our favorite, the infected-starship game (now titled <i>Warped Drive</i>) became the front-runner.  Brains were stormed as we came up with suitable game mechanics and tweaks to plot and setting. The pilot became a network engineer, and would be able to switch between meatspace and cyberspace. Meatspace gameplay would be centered on finding oxygen and accessing airgapped networks, and cyberspace would be centered on the anti-virus combat.
 </p>
 <p>
       During this discussion, I wrote an "Appendix" to our design doc (a small essay, really) in which I outlined the perils of feature creep. It contained this ominous section:
@@ -51,10 +57,19 @@
       Our idea of the core gameplay was limited to "clean viruses off of fancy sci-fi computers." We had no real idea of how to frame and present this idea. The tech demo was based on the idea that our sysadmin hero flys a single virtual antivirus cyberspace ship around, blasting individual viruses. After some thinking, this didn't sit right with me. The scope seemed too small. Sysadmins have to purge whole systems of malicious programs while worrying about the larger network. I consciously was rejecting the idea that the gameplay should fall in the cateogry of action/space flight sim. But if not that, what genre should the gameplay fit into? Puzzle? Platformer? 
 </p>
 <p>
-      After a lot of thought, I settled on <i>Strategy.</i> The gameplay metaphor was that a sysadmin would be a general, sending their anti-virus software into battle after battle to win the overall war. The core gameplay would be: remove viruses off of machine, move to next machine, repeat until the whole network is clean. I thought I had some good mechanics too: individual antivirus "scripts" (units) would require CPU cores (resources) to deploy, and your choice of scripts was constrained by RAM (loadout). Unfortunately, I didn't take to heart my own careful warning that feature creep can kill a project. Choosing to write a strategy game, while perhaps the right choice for some reasons, was the wrong choice for ensuring your game is fully completed on a timeline of months. 
+      After a lot of thought, I settled on <i>Strategy.</i> The sysadmin acts as a general, sending their anti-virus software into battle after battle to win the overall war. The core gameplay would be: remove viruses off of machine, move to next machine, repeat until the whole network is clean. I thought I had some good mechanics too: individual antivirus "scripts" (units) would require CPU cores (resources) to deploy, and your choice of scripts was constrained by RAM (loadout). Unfortunately, I didn't take to heart my own careful warning that feature creep can kill a project. Choosing to write a strategy game, while perhaps the right choice for some reasons, was the wrong choice for ensuring your game is fully completed on a timeline of months. 
 </p>
 <h3>Let's Get Down To Business</h3>
 <p>
+      I sketched out a 'vertical slice' of the game:
+      <ol>
+            <li>A main menu with new game and load game buttons</li>
+            <li>A 2D meatspace map with the ability for the hero network engineer to collect oxygen</li>
+            <li>A cyberspace overworld with combat level selection</li>
+            <li>A cyberspace "workshop" for "programming" antivirus units</li>
+            <li>A cyberspace combat level</li>
+      </ol>  
+      To cut down on development costs, meatspace would be done in 2D, and cyberspace models would be created from spaceship meshes and primitives.
       And so I started coding. Quite a lot of coding. And prototyping. And modelling. 
 </p>
 <figure class="img-wrapper">
