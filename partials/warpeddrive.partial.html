@@ -42,7 +42,7 @@
 </p>
 <h3>Prototypical Hesitance</h3>
 <p>
-      Our game design doc now had some important mechanics and a setting. What it did <strong>not</strong> have was a core gameplay loop. Switching between meatspace and cyberspace to manage your oxygen supply was a <i>secondary</i> gameplay loop. It didn't even have the genre of the core gameplay! Cyberspace and hacking have been presented as many different metaphors, from basic ASCII puzzles to graphically-intensive first person shooters. One of the earliest ideas the team had discussed took the "space" in "cyberspace" quite literally: server racks were solar systems, with individual machines being planets or moons. Software was represented as space stations or space ships, depending on their relative size. This appealed to us, as vehicles are always easier to model than humanoids.
+      Our game design doc now had some important mechanics and a setting. What it did <strong>not</strong> have was a core gameplay loop. Switching between meatspace and cyberspace to manage your oxygen supply was a <i>secondary</i> gameplay loop. We didn't even have the genre of the core gameplay! Cyberspace and hacking have been presented as many different metaphors, from basic ASCII puzzles to graphically-intensive first person shooters. One of the earliest ideas the team had discussed took the "space" in "cyberspace" quite literally: server racks were solar systems, with individual machines being planets or moons. Software was represented as space stations or space ships, depending on their relative size. This appealed to us, as vehicles are always easier to model than humanoids.
 </p>
 <p>
       At this point, instead of coming up with core gameplay on paper, I wanted to start prototyping. It had been over a year since I had messed around in Unity, so I was dying to dive back in and see how it had improved.  Getting back into it was great! Unity had much better performance and more free stuff, like the Image Effects library. The <a href="https://github.com/HarmonicOrder/WarpedDrive/commit/1403231dcfaadb15836ef798993cfbd69f96c07c">very first commits of the repository</a> were of a first prototype with  "cyberspace-as-space flight sim" gameplay. The player zoomed around a little space scene. Since I now had to design the visuals of this space scene, I started thinking about how to represent cyberspace on a starship in the future. 
@@ -54,12 +54,12 @@
 <p>
       The visual design now had a formula: cosmic shapes and patterns presented with the neon and pixels of cyberspace. The focus of the hacking gameplay was still unclear: is the player a one-man virus-busting starfighter? My limited knowledge of information security knew that using this conceptual base was a bad fit for the world of cyber-security, with its levels of complexity. 
 </p>
-<h3>PENTEST IN SPAACE</h3>
+<h3>And Now For a Completely Different Genre</h3>
 <p>
       Our idea of the goal of cyberspace combat was limited to "clean viruses off of fancy sci-fi computers." We had no real idea of how to frame and present this idea. The tech demo was based on the idea that our sysadmin hero flys a single virtual antivirus cyberspace ship around, blasting individual viruses. After some thinking, this didn't sit right with me. The scope seemed too small. Sysadmins have to purge whole systems of malicious programs while worrying about the larger network. Yes, the space setting was a good fit for action/space flight gameplay, but I consciously rejected the idea that the gameplay was restricted to those categories. But if not that, what genre should the gameplay fit into? Puzzle? Platformer? 
 </p>
 <p>
-      After a lot of thought, I settled on <i>Strategy.</i> The sysadmin acts as a general, sending their anti-virus software into battle after battle to win the overall war. The core gameplay would be: remove viruses off of machine, move to next machine, repeat until the whole network is clean. I thought I had some good mechanics too: individual antivirus "scripts" (units) would require CPU cores (resources) to deploy, and your choice of scripts was constrained by RAM (loadout). Unfortunately, I didn't take to heart my own careful warning that feature creep can kill a project. Choosing to write a strategy game, while perhaps the right choice for some reasons, was the wrong choice for ensuring your game is fully completed on a timeline of months. 
+      After a lot of thought, I settled on <i>Strategy.</i> The sysadmin acts as a general, sending their anti-virus software into battle after battle to win the overall war. The core gameplay would be: create anti-virus units with available resources, anti-virus units remove viruses off of machine, move to next machine, repeat until the whole network is clean. I thought I had some good mechanics too: individual antivirus scripts (units) would require CPU cores (resources) to deploy, and your choice of scripts was constrained by RAM (loadout). Unfortunately, I didn't take to heart my own careful warning that feature creep can kill a project. Choosing to write a strategy game, while perhaps the right choice for some reasons, was the wrong choice for ensuring your game is fully completed on a timeline of months. 
 </p>
 <h3>Let's Get Down To Business</h3>
 <p>
@@ -68,7 +68,7 @@
             <li>A main menu with new game and load game buttons</li>
             <li>A 2D meatspace map with the ability for the hero network engineer to collect oxygen</li>
             <li>A cyberspace overworld with combat level selection</li>
-            <li>A cyberspace "workshop" for "programming" antivirus units</li>
+            <li>A cyberspace "workshop" for "programming" anti-virus units</li>
             <li>A cyberspace combat level</li>
       </ol>  
       To cut down on development costs, meatspace would be done in 2D, and cyberspace models would be created from spaceship meshes and primitives. And so I started coding. Quite a lot of coding. And prototyping. And modelling. 
@@ -77,23 +77,51 @@
       <img src="http://i.imgur.com/rAxq30a.png" alt="">
       <figcaption>Virus Prototypes: bomber, torpedo, tank (left to right)</figcaption>
 </figure>
+<p>
+
+</p>
 <figure class="img-wrapper">
       <img src="http://i.imgur.com/Eom0rut.png" alt="">
       <figcaption>UV Mapping Skill++</figcaption>
 </figure>
+<p>
+
+</p>
+<figure class="img-wrapper">
+      <img src="http://i.imgur.com/6fPNuaS.png" alt="">
+      <figcaption>A design for the cyberspace overworld</figcaption>
+</figure>
 <h3>Your Own Cassandra</h3>
-<div class="img-wrapper">
-      
-</div>
-<div class="img-wrapper">
-      
-</div>
+<figure class="gfycat-small">
+      <div style='position:relative;padding-bottom:75%'><iframe src='https://gfycat.com/ifr/DistortedUnevenAmericanquarterhorse' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+      <figcaption>A virus-spawning miniboss hovering above an infected server</figcaption>
+</figure>
+<h3>It's Not Fun</h3>
+<p>It's now February, five months in. I'm showing to playtesters, getting feedback. At this point the player can complete cyberspace levels and even </p>
+<blockquote>
+      It's very interesting.
+</blockquote>
+<blockquote>
+      I don't know what I'm doing.
+</blockquote>
+<blockquote>
+      These controls feel...weird. 
+</blockquote>
+<p>While all of the feedback was supportive, and phrased nicely, I knew I had a problem. Playtesters had a <i>really</i> hard time figuring out the control scheme. They didn't know what they were looking at, and they didn't know how to play the game. It wasn't their fault: they were all gamers, used to all manner of genres and control schemes. They had problems with <i>this</i> game, right in front of them.  </p>
+<h3>State of Decay</h3>
+<p>
+      It's now March. I'm still working on <i>Warped Drive</i> but not at the same pace as I was. I know I must finish the tutorial levels or no-one will ever figure out how to play the combat levels without me there to hold their hand. Tutorials are a real pain to code. The "easy" way is to just label the UI and have big button prompts, but that always feels ham-handed. Good tutorials have a kind of light story, walking players through steps. The problem is that both the easy and the hard way require a bunch of tedious code to handle all sorts of things: what if the player clicks this button first? What if they can't figure this part out? Questions on how to implement it quickly grow out of control.   
+</p>
+<p>
+      I'm pretty discouraged at this point. Faced with the twin problems of an unteachable UI and a core gameplay loop that feels deterministic, I mentally surrender. Solutions for these twin problems that don't involve months more work are nonexistent after days of brainstorming. After the mental surrender, the drive to grind out commits every day fades.
+</p>
+<figure class="img-wrapper">
+      <img src="http://i.imgur.com/TZbUK8H.png" alt="426 commits with 45 commits in one week" title="That's 426 commits!">
+      <figcaption>Look at all those commits!</figcaption>
+</figure>
 <div class="imgur-wrapper">
       <blockquote class="imgur-embed-pub" lang="en" data-id="a/TSGH3"><a href="//imgur.com/TSGH3">Warped Drive</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 </div>
 <!--<p>This post, meant to be cathartic, ended up invoking much more emotion than I thought. It's been months since I've dropped this project, and re-visiting it is a little unsettling and intensely sad. I think that's because of how close it came to actually being <strong>done</strong>. Not half-finished, but wholly-finished. Maybe someday I'll rectify this sad state of affairs. I'll raise the digital coffin and banish all the negative emotional metadata. </p>
 <p>Maybe, hopefully.</p>
 <p>-Alex</p>-->
-<div class="gfycat-small">
-      <div style='position:relative;padding-bottom:75%'><iframe src='https://gfycat.com/ifr/DistortedUnevenAmericanquarterhorse' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
-</div>
