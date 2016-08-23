@@ -44,21 +44,23 @@
 <p>
       <!--Remember that. I'm going to ruefully call back to later down the page when things go off the rails.-->I was worried at the time that I was being too harsh with the readers of that mini-essay, that I'd scare my own siblings away from wanting to help.  Now I look back and wish I had taken this cautious approach not just at the beginning of this project, but for the whole laborious process. But we're not to the regret yet, that comes later in the story.
 </p>
+<h3>Prototypical Hesitance</h3>
 <p>
-      Our game design doc now had some important mechanics, a plot, and a setting. What it did <strong>not</strong> have was a core gameplay loop. We had sketched out a secondary gameplay loop: switching between meatspace and cyberspace to manage your oxygen supply. So I set out to prototype the core game loop. In addition, since I had past experience in Unity, I wanted to dive back in and see how it had improved.  It was great! Unity had much better performance and more free stuff, like the Image Effects library. I spent a few hours putting together a cyberspace-as-space flight sim. It was a tech demo, nothing fancy. I started thinking about how to represent cyberspace on a starship in the future. 
+      Our game design doc now had some important mechanics and a setting. What it did <strong>not</strong> have was a core gameplay loop. Switching between meatspace and cyberspace to manage your oxygen supply was a <i>secondary</i> gameplay loop. It didn't even have the genre of the core gameplay! Cyberspace and hacking have been presented as many different metaphors, from basic ASCII puzzles to graphically-intensive first person shooters. One of the earliest ideas the team had discussed took the "space" in "cyberspace" quite literally: server racks were solar systems, with individual machines being planets or moons. Software was represented as space stations or space ships, depending on their relative size. This appealed to us, as vehicles are always easier to model than humanoids.
 </p>
-<h3>PENTEST IN SPAACE</h3>
-<div class="gfycat-small">
+<p>
+      At this point, instead of coming up with core gameplay on paper, I wanted to start prototyping. It had been over a year since I had messed around in Unity, so I was dying to dive back in and see how it had improved.  Getting back into it was great! Unity had much better performance and more free stuff, like the Image Effects library. The <a href="https://github.com/HarmonicOrder/WarpedDrive/commit/1403231dcfaadb15836ef798993cfbd69f96c07c">very first commits of the repository</a> were of a first prototype with  "cyberspace-as-space flight sim" gameplay. The player zoomed around a little space scene. Since I now had to design the visuals of this space scene, I started thinking about how to represent cyberspace on a starship in the future. 
+</p>
+<figure class="gfycat-small">
       <div style='position:relative;padding-bottom:75%'><iframe src='https://gfycat.com/ifr/ContentSlimGermanwirehairedpointer' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
-</div>
-<p>
-      My tech demo had a first-person starship zooming around a space-station circling the moon of gas giant with binary jet streams at the poles. The intent was to have the space station represent a web server or database, and the gas giant was a representation of the machine that it was deployed on. 
-</p>
+      <figcaption>Early tech demo of a cyberspaceship flying around a station circling the moon of gas giant with binary jet streams at the poles</figcaption>
+</figure>
 <p>
       The visual design now had a formula: cosmic shapes and patterns presented with the neon and pixels of cyberspace. The focus of the hacking gameplay was still unclear: is the player a one-man virus-busting starfighter? My limited knowledge of information security knew that using this conceptual base was a bad fit for the world of cyber-security, with its levels of complexity. 
 </p>
+<h3>PENTEST IN SPAACE</h3>
 <p>
-      Our idea of the core gameplay was limited to "clean viruses off of fancy sci-fi computers." We had no real idea of how to frame and present this idea. The tech demo was based on the idea that our sysadmin hero flys a single virtual antivirus cyberspace ship around, blasting individual viruses. After some thinking, this didn't sit right with me. The scope seemed too small. Sysadmins have to purge whole systems of malicious programs while worrying about the larger network. I consciously was rejecting the idea that the gameplay should fall in the cateogry of action/space flight sim. But if not that, what genre should the gameplay fit into? Puzzle? Platformer? 
+      Our idea of the goal of cyberspace combat was limited to "clean viruses off of fancy sci-fi computers." We had no real idea of how to frame and present this idea. The tech demo was based on the idea that our sysadmin hero flys a single virtual antivirus cyberspace ship around, blasting individual viruses. After some thinking, this didn't sit right with me. The scope seemed too small. Sysadmins have to purge whole systems of malicious programs while worrying about the larger network. Yes, the space setting was a good fit for action/space flight gameplay, but I consciously rejected the idea that the gameplay was restricted to those categories. But if not that, what genre should the gameplay fit into? Puzzle? Platformer? 
 </p>
 <p>
       After a lot of thought, I settled on <i>Strategy.</i> The sysadmin acts as a general, sending their anti-virus software into battle after battle to win the overall war. The core gameplay would be: remove viruses off of machine, move to next machine, repeat until the whole network is clean. I thought I had some good mechanics too: individual antivirus "scripts" (units) would require CPU cores (resources) to deploy, and your choice of scripts was constrained by RAM (loadout). Unfortunately, I didn't take to heart my own careful warning that feature creep can kill a project. Choosing to write a strategy game, while perhaps the right choice for some reasons, was the wrong choice for ensuring your game is fully completed on a timeline of months. 
@@ -73,8 +75,7 @@
             <li>A cyberspace "workshop" for "programming" antivirus units</li>
             <li>A cyberspace combat level</li>
       </ol>  
-      To cut down on development costs, meatspace would be done in 2D, and cyberspace models would be created from spaceship meshes and primitives.
-      And so I started coding. Quite a lot of coding. And prototyping. And modelling. 
+      To cut down on development costs, meatspace would be done in 2D, and cyberspace models would be created from spaceship meshes and primitives. And so I started coding. Quite a lot of coding. And prototyping. And modelling. 
 </p>
 <figure class="img-wrapper">
       <img src="http://i.imgur.com/rAxq30a.png" alt="">
