@@ -82,26 +82,29 @@
       <figcaption>Virus Prototypes: bomber, torpedo, tank (left to right)</figcaption>
 </figure>
 <p>
-
+      A month goes by and the vertical slice is coming along nicely: players can start a new game, load an old game, and transition through meatspace into cyberspace. The cyberspace workshop for units is scaffolded and three combat levels are done. A few weeks later, and there are three different enemy unit types, and three different antivirus unit types. My own playtesting seems pretty fun- viruses blow up, computers are conquered, and levels are winnable, even though they are pathetically easy.
 </p>
 <figure class="img-wrapper">
-      <img src="http://i.imgur.com/Eom0rut.png" alt="">
-      <figcaption>UV Mapping Skill++</figcaption>
+      <img src="http://i.imgur.com/Eom0rut.png" alt="" title="UV Mapping Skill++">
+      <figcaption>UV Mapping the Tank mesh</figcaption>
 </figure>
 <p>
-
+      Things seem really good! I start spending time on lore and plot. The New Game screen is written to provide the backstory: the player signs up to be a crewmember on a "Wormway Construction Starship" that lasts 10 subjective years and 25 Earth years. I start sketching out the plotline - as the player disinfects systems, they will learn more and more about the virus mastermind, before journeying in meatspace to find a stowaway AI core in the cargo hold. I add a Database object into combat levels that can be scanned to reveal lore documents, to give both a collectable and another outlet for more gamesetting information.  
+</p>
+<p>
+      I add a few new combat mechanics as well - a key and door system to gate movement between nodes in combat, and an "artillery" object that fires missles that can cross nodes and applies minimum damage to viruses (and is utterly overpowered.) An ability is added for the player to "interrupt" combat, freezing time. I theorize it should work to give players additional time to strategize. 
 </p>
 <figure class="img-wrapper">
       <img src="http://i.imgur.com/6fPNuaS.png" alt="">
-      <figcaption>A design for the cyberspace overworld</figcaption>
+      <figcaption>Final design for the cyberspace overworld</figcaption>
 </figure>
 <h3>Your Own Cassandra</h3>
 <figure class="gfycat-small">
       <div style='position:relative;padding-bottom:75%'><iframe src='https://gfycat.com/ifr/DistortedUnevenAmericanquarterhorse' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
       <figcaption>A virus-spawning miniboss hovering above an infected server</figcaption>
 </figure>
-<h3>It's Not Fun</h3>
-<p>It's now February, five months in. I'm showing to playtesters, getting feedback. At this point the player can complete cyberspace levels and even </p>
+<h3>How do I do anything?</h3>
+<p>It's now February, five months in. I'm showing to playtesters, getting feedback. At this point the player can complete 6+ cyberspace levels, the virus can fight back and reinfect computers (upping the difficulty), and all 6 antivirus unit types are available.</p>
 <blockquote>
       It's very interesting.
 </blockquote>
@@ -111,7 +114,16 @@
 <blockquote>
       These controls feel...weird. 
 </blockquote>
-<p>While all of the feedback was supportive, and phrased nicely, I knew I had a problem. Playtesters had a <i>really</i> hard time figuring out the control scheme. They didn't know what they were looking at, and they didn't know how to play the game. It wasn't their fault: they were all gamers, used to all manner of genres and control schemes. They had problems with <i>this</i> game, right in front of them.  </p>
+<p>
+      While all of the feedback was supportive, and phrased nicely, I knew I had a problem. Playtesters had a <i>really</i> hard time figuring out the control scheme. They didn't know what they were looking at, and they didn't know how to play the game. It wasn't their fault: they were all gamers, used to all manner of genres and control schemes. They had problems with <i>this</i> game, right in front of them.  
+</p>
+<p>
+      Playtesters can't figure out how to pan and zoom. Playtesters create units, watch them die, and then sit back, baffled as to what to do next. In retrospect, it's easy to see why: I've succeeded in making gameplay that is <i>novel</i> but I've framed it in a way that it is utterly alien to even accomplished gamers. I have a strategy game with no fixed-height sidescrolling overview and no resource mining. I have units that cannot be grouped with a click-and-drag, cannot be put into formation, and cannot receive new orders once spawned. Battlefield fronts are presented as 3D but are effectively a 2D plane.
+</p>
+<p>
+      I start on a tutorial to try and fix this glaring error in my game design. Progress slows to a crawl. There's a lot to explain to a user, the use of keyboard-only bindings is complicating everything, and I'm having a having a hard time communicating the big picture.
+</p>
+<h3>It's Not Fun</h3>
 <h3>State of Decay</h3>
 <p>
       It's now March. I'm still working on <i>Warped Drive</i> but not at the same pace as I was. I know I must finish the tutorial levels or no-one will ever figure out how to play the combat levels without me there to hold their hand. Tutorials are a real pain to code. The "easy" way is to just label the UI and have big button prompts, but that always feels ham-handed. Good tutorials have a kind of light story, walking players through steps. The problem is that both the easy and the hard way require a bunch of tedious code to handle all sorts of things: what if the player clicks this button first? What if they can't figure this part out? Questions on how to implement it quickly grow out of control.   
