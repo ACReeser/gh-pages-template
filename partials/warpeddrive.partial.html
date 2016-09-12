@@ -88,13 +88,19 @@
       Things seem really good! I start spending time on lore and plot. The New Game screen is written to provide the backstory: the player signs up to be a crewmember on a "Wormway Construction Starship" that lasts 10 subjective years and 25 Earth years. I start sketching out the plotline - as the player disinfects systems, they will learn more and more about the virus mastermind, before journeying in meatspace to find a stowaway AI core in the cargo hold. I add a Database object into combat levels that can be scanned to reveal lore documents, to give both a collectable and another outlet for more gamesetting information.  
 </p>
 <p>
-      I add a few new combat mechanics as well - a key and door system to gate movement between nodes in combat, and an "artillery" object that fires missles that can cross nodes and applies minimum damage to viruses (and is utterly overpowered.) An ability is added for the player to "interrupt" combat, freezing time. I theorize it should work to give players additional time to strategize. 
+      I add a few new combat mechanics as well - a key and door system to gate movement between nodes in combat, and an "artillery" object that fires missiles that can cross nodes and applies minimum damage to viruses (and is utterly overpowered.) An ability is added for the player to "interrupt" combat, freezing time. I theorize it should work to give players additional time to strategize.
 </p>
 <figure class="img-wrapper">
       <img src="http://i.imgur.com/6fPNuaS.png" alt="">
       <figcaption>Final design for the cyberspace overworld</figcaption>
 </figure>
 <h3>Your Own Cassandra</h3>
+<p>
+      Around this time I get really concerned about the core gameplay: it feels entirely deterministic. Most levels can be beat by just one tactic: spamming units. Actual strategic choices are few and far between, and most fall within the question of attempting to attack a well defended position for a larger reward vs taking a lightly defended position for a lesser reward. This is problematic: better level design will help shake things up, but I need more mechanics to play with or my "strategy" game will be a joke.
+</p>
+<p>
+      To begin addressing these issues, I come up with a simple level mechanic and a much more complicated systemic mechanic. The simple addition is to add a very badly needed enemy respawner. This makes the low-level unit spam approach much harder, but is heavy-handed and I intend to use it sparingly. The second addition is much more novel - I eliminate hit points and replace it with a one-hit-kill percentage-based-dodge system.
+</p>
 <figure class="gfycat-small">
       <div style='position:relative;padding-bottom:75%'><iframe src='https://gfycat.com/ifr/DistortedUnevenAmericanquarterhorse' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
       <figcaption>A virus-spawning miniboss hovering above an infected server</figcaption>
@@ -120,6 +126,9 @@
       I start on a tutorial to try and fix this glaring error in my game design. Progress slows to a crawl. There's a lot to explain to a user, the use of keyboard-only bindings is complicating everything, and I'm having a having a hard time communicating the big picture.
 </p>
 <h3>It's Not Fun</h3>
+<p>
+      A sinking feeling
+</p>
 <h3>State of Decay</h3>
 <p>
       It's now March. I'm still working on <i>Warped Drive</i> but not at the same pace as I was. I know I must finish the tutorial levels or no-one will ever figure out how to play the combat levels without me there to hold their hand. Tutorials are a real pain to code. The "easy" way is to just label the UI and have big button prompts, but that always feels ham-handed. Good tutorials have a kind of light story, walking players through steps. The problem is that both the easy and the hard way require a bunch of tedious code to handle all sorts of things: what if the player clicks this button first? What if they can't figure this part out? Questions on how to implement it quickly grow out of control.   
@@ -131,9 +140,15 @@
       <img src="http://i.imgur.com/TZbUK8H.png" alt="426 commits with 45 commits in one week" title="That's 426 commits!">
       <figcaption>Look at all those commits!</figcaption>
 </figure>
+<h3>Continue?</h3>
+<p>Things aren't looking good for <i>Warped Drive.</i> I don't have as much free time to work on it as I did back when development was in full swing, and I have yet to find silver bullets to fix the issues it has.  At this point, I intend to wrap up development by adding in placeholder levels and literally adding big labels that say "Incomplete" for features that weren't finished. To fix the control scheme I may include a static image dense with instructions on the first few levels.</p>
+<p>In the end, I'm glad I got to have the learning experience from this failure. One day I'll finish a game, but today is not that day.</p>
+<p>If you want to browse the code, <a href="https://github.com/HarmonicOrder/WarpedDrive/">check out the GitHub repo</a>, and if you're interested in playing the game, <a href="http://harmonicorder.github.io/WarpedDrive/">check out the <i>Warped Drive</i> website.</a></p>
+<p>If pictures of the final result are good enough, a gallery of screenshots is below:</p>
 <div class="imgur-wrapper">
       <blockquote class="imgur-embed-pub" lang="en" data-id="a/TSGH3"><a href="//imgur.com/TSGH3">Warped Drive</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 </div>
+<p>-Alex</p>
 <!--<p>This post, meant to be cathartic, ended up invoking much more emotion than I thought. It's been months since I've dropped this project, and re-visiting it is a little unsettling and intensely sad. I think that's because of how close it came to actually being <strong>done</strong>. Not half-finished, but wholly-finished. Maybe someday I'll rectify this sad state of affairs. I'll raise the digital coffin and banish all the negative emotional metadata. </p>
 <p>Maybe, hopefully.</p>
 <p>-Alex</p>-->
