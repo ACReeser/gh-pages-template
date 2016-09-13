@@ -96,52 +96,61 @@
 </figure>
 <h3>Your Own Cassandra</h3>
 <p>
-      Around this time I get really concerned about the core gameplay: it feels entirely deterministic. Most levels can be beat by just one tactic: spamming units. Actual strategic choices are few and far between, and most fall within the question of attempting to attack a well defended position for a larger reward vs taking a lightly defended position for a lesser reward. This is problematic: better level design will help shake things up, but I need more mechanics to play with or my "strategy" game will be a joke.
+      Around this time I get really concerned about the core gameplay: it feels entirely deterministic. Most levels can be beat by just one tactic: spamming units. Actual strategic choices are few and far between, and most fall within the question of attempting to attack a well defended position for a larger reward vs taking a lightly defended position for a lesser reward. This is problematic: better level design will help shake things up, but I need more mechanics to play with or my "strategy" game will be a joke. To address these issues, I come up with a simple level mechanic and a much more complicated systemic mechanic. 
 </p>
 <p>
-      To begin addressing these issues, I come up with a simple level mechanic and a much more complicated systemic mechanic. The simple addition is to add a very badly needed enemy respawner. This makes the low-level unit spam approach much harder, but is heavy-handed and I intend to use it sparingly. The second addition is much more novel - I eliminate hit points and replace it with a one-hit-kill percentage-based-dodge system.
+      The simple addition is to add a very badly needed enemy respawner. This makes the low-level unit spam approach much harder, but I make a mental note to use it sparingly so as to allow spamming to be viable for some of the levels.
 </p>
 <figure class="gfycat-small">
       <div style='position:relative;padding-bottom:75%'><iframe src='https://gfycat.com/ifr/DistortedUnevenAmericanquarterhorse' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
-      <figcaption>A virus-spawning miniboss hovering above an infected server</figcaption>
+      <figcaption>The new virus-spawning miniboss hovering above an infected server</figcaption>
 </figure>
+<p>
+      The second addition is much more novel - I eliminate hit points and replace it with a one-hit-kill percentage-based-dodge system. Each unit has a chance-to-kill when attacking and a chance-to-dodge when being hit by an attack. Exceptionally strong units have extra "lives." Buffs and debuffs for these two percentages for support units round out the mechanic. This new system is implemented quickly and adds some much-needed randomness to the gameplay.
+</p>
+<p>
+      I add one last mechanic to the game to enhance the player's agency and give more strategic depth: sysadmin abilities, on a cooldown. They have immediate effect, like banishing virus units for a time, but have a slight chance to backfire. The "freeze time" pause introduced earlier in development now becomes invaluable as a way for the player to stop and think about these abilities, or stop the mayhem to trigger one. Only four or five are planned, and are intended to be rewarded to the player after cleaning every level in a world.  
+</p>
+<p>
+      Inordinately happy with the new mechanics, I get the game into a playtestable shape.
+</p>
 <h3>How do I do anything?</h3>
-<p>It's now February, five months in. I'm showing to playtesters, getting feedback. At this point the player can complete 6+ cyberspace levels, the virus can fight back and reinfect computers (upping the difficulty), and all 6 antivirus unit types are available.</p>
+<p>It's now February, five months in. At this point the player can complete 6+ cyberspace levels, the virus can fight back and reinfect computers (upping the difficulty), and all 6 antivirus unit types are available. I eagerly show it to playtesters, asking for any and all feedback.</p>
 <blockquote>
-      It's very interesting.
+      These controls feel weird. 
 </blockquote>
 <blockquote>
-      I don't know what I'm doing.
+      It's very...interesting.
 </blockquote>
 <blockquote>
-      These controls feel...weird. 
+      I have no idea what I'm doing.
 </blockquote>
 <p>
       While all of the feedback was supportive, and phrased nicely, I knew I had a problem. Playtesters had a <i>really</i> hard time figuring out the control scheme. They didn't know what they were looking at, and they didn't know how to play the game. It wasn't their fault: they were all gamers, used to all manner of genres and control schemes. They had problems with <i>this</i> game, right in front of them.  
 </p>
 <p>
-      Playtesters can't figure out how to pan and zoom. Playtesters create units, watch them die, and then sit back, baffled as to what to do next. In retrospect, it's easy to see why: I've succeeded in making gameplay that is <i>novel</i> but I've framed it in a way that it is utterly alien to even accomplished gamers. I have a strategy game with no fixed-height sidescrolling overview and no resource mining. I have units that cannot be grouped with a click-and-drag, cannot be put into formation, and cannot receive new orders once spawned. Battlefield fronts are presented as 3D but are effectively a 2D plane.
+      Playtesters can't figure out how to pan and zoom. Playtesters create units, watch them die, and then sit back, baffled as to what to do next. In retrospect, it's easy to see why: I've succeeded in making gameplay that is <i>novel</i> but I've framed it in a way that it is utterly alien to even accomplished gamers. I have a strategy game with no fixed-height sidescrolling overview and no resource mining. I have units that cannot be grouped with a click-and-drag, cannot be put into formation, and cannot receive new orders once spawned. Battlefield fronts are presented as 3D but are effectively a 2D plane. Abilities aren't in a center-aligned row, they're off in the corner. Number keys don't trigger abilities, they spawn units.
 </p>
 <p>
       I start on a tutorial to try and fix this glaring error in my game design. Progress slows to a crawl. There's a lot to explain to a user, the use of keyboard-only bindings is complicating everything, and I'm having a having a hard time communicating the big picture.
 </p>
-<h3>It's Not Fun</h3>
-<p>
-      A sinking feeling
-</p>
-<h3>State of Decay</h3>
+<h3>Not Fun Anymore</h3>
 <p>
       It's now March. I'm still working on <i>Warped Drive</i> but not at the same pace as I was. I know I must finish the tutorial levels or no-one will ever figure out how to play the combat levels without me there to hold their hand. Tutorials are a real pain to code. The "easy" way is to just label the UI and have big button prompts, but that always feels ham-handed. Good tutorials have a kind of light story, walking players through steps. The problem is that both the easy and the hard way require a bunch of tedious code to handle all sorts of things: what if the player clicks this button first? What if they can't figure this part out? Questions on how to implement it quickly grow out of control.   
 </p>
 <p>
-      I'm pretty discouraged at this point. Faced with the twin problems of an unteachable UI and a core gameplay loop that feels deterministic, I mentally surrender. Solutions for these twin problems that don't involve months more work are nonexistent after days of brainstorming. After the mental surrender, the drive to grind out commits every day fades.
+      I periodically take a break from the tutorial code to make larger, more complex levels. Even after all the redesign, I still can't shake a sinking feeling about the core gameplay. Antivirus combat is still pretty predictable; the challenge is almost never <i>how</i> to finish the level, it's more a question of <i>when</i>. This lack of challenge is even more egregious given that the oxygen time limit mechanic is still in full force! Players still have a ticking clock to play against, and winning a level is never exciting. That's the real sucker punch. <strong><i>The game isn't exciting.</i></strong>  I could fully finish out all the other features, upgrades, and lore, and I'd still have paint-by-numbers core gameplay. 
+</p>
+<p>
+      I'm pretty discouraged at this point. Faced with the twin problems of an unteachable UI and a core gameplay loop that feels deterministic, I mentally surrender. Solutions for these twin problems that don't involve months more work are nonexistent after days of brainstorming. After the mental surrender, the drive to grind out commits every day fades. I go a week with no commits to the repository, reassuring myself that it's just a little break. Two weeks after that I am no longer deluding myself: active work on <i>Warped Drive</i> is on hiatus.
 </p>
 <figure class="img-wrapper">
       <img src="http://i.imgur.com/TZbUK8H.png" alt="426 commits with 45 commits in one week" title="That's 426 commits!">
       <figcaption>Look at all those commits!</figcaption>
 </figure>
 <h3>Continue?</h3>
-<p>Things aren't looking good for <i>Warped Drive.</i> I don't have as much free time to work on it as I did back when development was in full swing, and I have yet to find silver bullets to fix the issues it has.  At this point, I intend to wrap up development by adding in placeholder levels and literally adding big labels that say "Incomplete" for features that weren't finished. To fix the control scheme I may include a static image dense with instructions on the first few levels.</p>
+<p>Things aren't looking good for <i>Warped Drive.</i> I don't have as much free time to work on it as I did back when development was in full swing, and I have yet to find silver bullets to fix the issues it has.  At this point, I intend to wrap up development by adding in placeholder levels and literally adding big labels that say "Incomplete" for features that weren't finished. To fix the tutorial problem I may include a static image dense with instructions on the first few levels.</p>
+<p>What did I learn from all this? I learned that venturing too far into new territory can leave people lost. A game with too many novel features has too much to explain. Creating an environment that isn't in the physical realm throws out all the rules we've experienced as humans, and presenting a game unlike any other disconnects gamers from their accumulated knowledge of how games work. Perhaps if I had used a standard RTS view, it would have been easier for playtesters to understand. Conversely, if instead of viruses I had spaceships and solar systems, the novel UI and mechanics may have been easier to grok. Lastly, I learned that core gameplay (especially with new and unproven mechanics) needs to be <strong>engaging</strong>. It's not enough to approach it early, get a working rough draft, and call it good enough. This, in retrospect, was harder a lesson to learn, as it's such a  monumental mistake, and an obvious one. <i>Warped Drive</i> isn't my first game, but I'll be sure to apply this lesson with every game after it.</p>
 <p>In the end, I'm glad I got to have the learning experience from this failure. One day I'll finish a game, but today is not that day.</p>
 <p>If you want to browse the code, <a href="https://github.com/HarmonicOrder/WarpedDrive/">check out the GitHub repo</a>, and if you're interested in playing the game, <a href="http://harmonicorder.github.io/WarpedDrive/">check out the <i>Warped Drive</i> website.</a></p>
 <p>If pictures of the final result are good enough, a gallery of screenshots is below:</p>
